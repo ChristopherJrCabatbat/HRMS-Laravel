@@ -1,0 +1,114 @@
+body {
+    overflow-x: hidden;
+  }
+  
+  .custom-img-height {
+    height: auto;
+    max-height: 50vh; /* Adjust the max height as needed */
+    width: auto;
+    max-width: 100%;
+  }
+  
+  .p-padding {
+    padding: 0 10vw 0 10vw;
+  }
+  
+  footer {
+    margin-top: 1.5rem;
+  }
+  
+  .recruitment-logo {
+    height: 20vh; /* Ensure equal height and width */
+    width: 20vh; /* Ensure equal height and width */
+    border: solid 4px #0d6efd;
+    object-fit: cover; /* Ensure the image remains proportional */
+    padding: 2px;
+  }
+  
+  .logo {
+    margin-left: -2vw;
+  }
+  
+  .body {
+    background-color: #dadada;
+  }
+  
+  
+  /* Sidebar */
+  .sidebar {
+    height: 100vh;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: white;
+    padding-top: 20px;
+    z-index: 1;
+    border-right: 1px solid #dee2e6;
+  }
+  .sidebar .user-info {
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 60px;
+  }
+  .sidebar .user-info img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+  }
+  .sidebar .user-info .username {
+    font-weight: bold;
+  }
+  .sidebar .user-info .position {
+    font-size: 0.9em;
+    color: #6c757d;
+  }
+  
+  /* Sidebar Links */
+  .sidebar .nav-link {
+    color: #333;
+    padding: 10px 20px;
+  }
+  .sidebar .nav-link:hover {
+    background-color: #bebebe;
+  }
+  .sidebar .nav-link.side-active {
+    background-color: #0d6efd;
+    color: white;
+  }
+  
+  /* End Sidebar */
+  
+  
+  
+  .main-content {
+    margin-left: 250px;
+    padding: 20px;
+    margin-top: 10vh;
+  }
+  .card-body {
+    display: flex;
+    align-items: center;
+  }
+  .card-body img {
+    width: 40px;
+    height: 40px;
+    margin-right: 15px;
+  }
+  
+  .card-min-width {
+    min-width: 230px;
+  }
+  
+  .table-responsive {
+    min-width: 400px;
+    overflow: hidden;
+    background-color: white;
+  }
+  
+  .table {
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+  }

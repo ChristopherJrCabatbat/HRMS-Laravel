@@ -5,9 +5,26 @@ use App\Http\Controllers\LoginController;
 
 use Illuminate\Support\Facades\Route;
 
+// // Test
+// Route::get('/', function () {
+//     return view('z-skeleton');
+// });
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('start.home-page');
 });
+
+Route::get('/recruitment', function () {
+    return view('start.recruitment');
+});
+
+Route::get('/admin', function () {
+    return view('start.admin');
+});
+Route::get('/admin-register', function () {
+    return view('start.admin-register');
+});
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
