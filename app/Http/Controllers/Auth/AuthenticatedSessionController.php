@@ -16,7 +16,8 @@ class AuthenticatedSessionController extends Controller
      */
     public function create(): View
     {
-        return view('auth.login');
+        // return view('auth.login');
+        return view('start.admin');
     }
 
     /**
@@ -28,11 +29,13 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        if ($request->user()->user_type === 'admin') {
-            return redirect ('admin/dashboard');
-        }
+        // if ($request->user()->user_type === 'admin') {
+        //     return redirect ('/manager/content_dashboard');
+        // }
 
-        return redirect()->intended(route('dashboard'));
+        // return redirect()->intended(route('/manager/content_dashboard'));
+        return redirect('/manager/content_dashboard')->with('message', 'You have successfully logged in!');
+        // return redirect()->intended(route('admin'));
     }
 
     /**

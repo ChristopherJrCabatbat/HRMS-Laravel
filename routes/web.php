@@ -15,6 +15,10 @@ use Illuminate\Support\Facades\Route;
 //     return view('z-skeleton');
 // });
 
+Route::get('/welcome', function () {
+    return view('welcome');
+});
+
 Route::get('/', function () {
     return view('start.home-page');
 });
@@ -30,15 +34,15 @@ Route::get('/admin-register', function () {
     return view('start.admin-register');
 });
 
-Route::get('/content-dashboard', function () {
-    return view('content-pages.dashboard');
-});
+// Route::get('/content-dashboard', function () {
+//     return view('content-pages.dashboard');
+// });
 
 
 // Manager Routes
 Route::group([
     'prefix' => 'manager', 'as' => 'manager.', 
-    // 'middleware' => ['auth', 'admin'],
+    'middleware' => ['auth', 'verified'],
 ], function () {
 
     // Dashboard

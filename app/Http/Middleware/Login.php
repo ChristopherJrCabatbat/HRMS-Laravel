@@ -19,9 +19,9 @@ class Login
     public function handle(Request $request, Closure $next): Response
     {
 
-        if (Auth::user()->user_type != 'admin') {
-            return redirect('dashboard')->with('alert', 'You must log in as admin to continue.');
-        }
+        // if (Auth::user()->user_type != 'admin') {
+        //     return redirect('dashboard')->with('alert', 'You must log in as admin to continue.');
+        // }
 
         return $next($request);
     }

@@ -16,6 +16,9 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('user_type')->default('admin');
+
+            $table->string('photo')->nullable(); //Inayos ito at na-migrate na
+
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
