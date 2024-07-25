@@ -2,6 +2,11 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ManagerController;
+use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\AttendanceController;
+use App\Http\Controllers\LeaveController;
+use App\Http\Controllers\DepartmentController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -23,6 +28,40 @@ Route::get('/admin', function () {
 });
 Route::get('/admin-register', function () {
     return view('start.admin-register');
+});
+
+Route::get('/content-dashboard', function () {
+    return view('content-pages.dashboard');
+});
+
+
+// Manager Routes
+Route::group([
+    'prefix' => 'manager', 'as' => 'manager.', 
+    // 'middleware' => ['auth', 'admin'],
+], function () {
+
+    // Dashboard
+    Route::get('/content_dashboard', [ManagerController::class, 'content_dashboard'])->name('content_dashboard');
+
+    // Employee
+    Route::resource('employee', EmployeeController::class);
+
+    // Attendace
+    Route::resource('attendance', AttendanceController::class);
+
+    // Leave
+    Route::resource('leave', LeaveController::class);
+
+    // Department
+    Route::resource('department', DepartmentController::class);
+
+    // Recruitment
+    Route::get('/recruitment', [ManagerController::class, 'recruitment'])->name('recruitment');
+
+    // Payroll
+    Route::get('/payroll', [ManagerController::class, 'payroll'])->name('payroll');
+
 });
 
 

@@ -25,7 +25,7 @@
             <p class="text-center fs-3">Log in</p>
         </div>
         <div class="recruitment-form container border p-5 rounded-3 mt-3">
-            <form>
+            <form action="/content-dashboard">
                 <div class="mb-3 form-floating">
                     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
                         placeholder="" />
@@ -46,7 +46,7 @@
                 </div>
 
                 <div class="d-grid my-3">
-                    <button class="btn btn-primary" type="button">Log in</button>
+                    <button class="btn btn-primary" type="submit">Log in</button>
                 </div>
                 <div class="container d-flex justify-content-center align-items-center mb-0">
                     <p class="mb-0">Not a member yet? <a href="/admin-register">Sign up</a></p>
