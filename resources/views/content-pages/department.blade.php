@@ -44,7 +44,7 @@
     <li class="nav-item">
         {{-- <a class="nav-link" href="/manager/department-new">New Department</a> --}}
         <a class="nav-link" href="/manager/department/create">New Department</a>
-        {{-- department/create --}}
+        {{-- /manager/department/create --}}
     </li>
     <li class="nav-item">
         <hr />

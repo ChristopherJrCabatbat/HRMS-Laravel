@@ -41,7 +41,7 @@
         </ul>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="department/create">New Department</a>
+        <a class="nav-link" href="/manager/department/create">New Department</a>
     </li>
     <li class="nav-item">
         <hr />
@@ -60,7 +60,7 @@
             <h3 class="me-2"><i class="fas fa-plus"></i> Employee Attendance</h3>
         </div>
         <hr />
-        <table class="table text-center">
+        <table class="table text-center align-middle">
             <thead class="table-light">
                 <tr>
                     <th>Date</th>
@@ -117,7 +117,7 @@
             <h5 class="me-2"><i class="fas fa-plus"></i> Signed in Employee/s</h5>
         </div>
         <hr />
-        <table class="table table-bordered bg-white rounded text-center">
+        <table class="table table-bordered bg-white rounded text-center align-middle">
             <thead class="table-light">
                 <tr>
                     <th scope="col">Date</th>

@@ -41,7 +41,7 @@
         </ul>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="department/create">New Department</a>
+        <a class="nav-link" href="/manager/department/create">New Department</a>
     </li>
     <li class="nav-item">
         <hr />
@@ -65,7 +65,7 @@
                 </button>
             </form>
         </div>
-        <table class="table table-bordered bg-white rounded">
+        <table class="table table-bordered bg-white rounded align-middle">
             <thead class="table-light">
                 <tr>
                     <th scope="col">Image</th>
@@ -77,35 +77,43 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>
-                        <img src="{{ asset('images/employee.png') }}" class="img-fluid rounded-circle" alt="Employee Image"
-                            style="width: 40px; height: 40px" />
-                    </td>
-                    <td>John</td>
-                    <td>Doe</td>
-                    <td>+1234567890</td>
-                    <td>johndoe@gmail.com</td>
-                    <td class="position-relative">
-                        <div class="dropdown">
-                            <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="manageDropdown1"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                Manage
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="manageDropdown1">
-                                <li>
-                                    {{-- <a class="dropdown-item" href="/maanger/employee-view">View</a> --}}
-                                    <a class="dropdown-item" href="employee/{id}">View</a>
-                                    {{-- employee/{{$employees->id}} --}}
-                                </li>
-                                <li>
-                                    {{-- <a class="dropdown-item" href="employee-edit">Edit</a> --}}
-                                    <a class="dropdown-item" href="employee/{id}/edit">Edit</a>
-                                    {{-- employee/{{$employees->id}}/edit --}}
-                                </li>
+                @foreach ($employees as $employees)
+                    <tr>
+                        <td>
+                            <img src="{{ $employees->photo ? asset($employees->photo) : asset('images/employee.png') }}"
+                                class="img-fluid rounded-circle" alt="Employee Image" style="width: 40px; height: 100%" />
+
+                        </td>
+                        <td>{{ $employees->first_name }}</td>
+                        <td>{{ $employees->last_name }}</td>
+                        <td>{{ $employees->mobile_number }}</td>
+                        <td>{{ $employees->email }}</td>
+                        <td class="position-relative">
+                            <div class="dropdown">
+                                <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="manageDropdown1"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    Manage
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="manageDropdown1">
+                                    <li>
+                                        <a class="dropdown-item" href="employee/{{ $employees->id }}">View</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="employee/{{ $employees->id }}/edit">Edit</a>
+                                        {{-- employee/{{$employees->id}}/edit --}}
+                                    </li>
 
 
-                                <li><a class="dropdown-item" href="employee/{id}">Delete</a>
+                                    {{-- <li><a class="dropdown-item" href="employee/{id}">Delete</a> </li>--}}
+                                    
+                                    <li>
+                                        <form action="employee/{{ $employees->id }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="dropdown-item">Delete</button>
+                                        </form>
+                                        
+                                    </li>
                                     {{-- action="employee/{{$employees->id}}" --}}
                                     {{-- <form action="{{ route('students.destroy', $stud->id) }}"
                                   method="POST">
@@ -113,11 +121,11 @@
                                     @method('DELETE')
                                     <input class="delete" type="submit" name="submit" value="Delete" />
                                 </form> --}}
-                                </li>
-                            </ul>
-                        </div>
-                    </td>
-                </tr>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                @endforeach
                 <!-- Add more rows as needed -->
             </tbody>
         </table>
@@ -125,18 +133,18 @@
 @endsection
 
 @section('scripts')
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-      var dropdownElement = document.getElementById("manageDropdown1");
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var dropdownElement = document.getElementById("manageDropdown1");
 
-      dropdownElement.addEventListener("click", function (event) {
-        var dropdownMenu = this.nextElementSibling;
-        var rect = dropdownElement.getBoundingClientRect();
-        dropdownMenu.style.position = "fixed";
-        dropdownMenu.style.top = rect.bottom - 30 + "px"; // Adjust the top position
-        dropdownMenu.style.left = rect.left - 87 + "px"; // Adjust the left position
-        dropdownMenu.style.width = "200px"; // Adjust as needed
-      });
-    });
-  </script>
+            dropdownElement.addEventListener("click", function(event) {
+                var dropdownMenu = this.nextElementSibling;
+                var rect = dropdownElement.getBoundingClientRect();
+                dropdownMenu.style.position = "fixed";
+                dropdownMenu.style.top = rect.bottom - 30 + "px"; // Adjust the top position
+                dropdownMenu.style.left = rect.left - 87 + "px"; // Adjust the left position
+                dropdownMenu.style.width = "200px"; // Adjust as needed
+            });
+        });
+    </script>
 @endsection

@@ -41,7 +41,7 @@
         </ul>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="department/create">New Department</a>
+        <a class="nav-link" href="/manager/department/create">New Department</a>
     </li>
     <li class="nav-item">
         <hr />
@@ -62,7 +62,7 @@
             </h3>
         </div>
         <hr />
-        <table class="table text-center">
+        <table class="table text-center align-middle">
             <thead class="table-light">
                 <tr>
                     <th>Start Date</th>
@@ -129,7 +129,7 @@
             </h5>
         </div>
         <hr />
-        <table class="table table-bordered bg-white rounded text-center">
+        <table class="table table-bordered bg-white rounded text-center align-middle">
             <thead class="table-light">
                 <tr>
                     <th scope="col">Start Date</th>

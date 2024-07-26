@@ -41,7 +41,7 @@
         </ul>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="department/create">New Department</a>
+        <a class="nav-link" href="/manager/department/create">New Department</a>
     </li>
     <li class="nav-item">
         <hr />
@@ -59,7 +59,7 @@
         <div class="d-flex justify-content-center align-items-center mb-3">
             <h4 class="mb-0">Employee's Payroll System</h4>
         </div>
-        <table class="table table-bordered bg-white rounded">
+        <table class="table table-bordered bg-white rounded align-middle">
             <thead class="table-light">
                 <tr>
                     <th scope="col">Image</th>

@@ -40,7 +40,7 @@
         </ul>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="department/create">New Department</a>
+        <a class="nav-link" href="/manager/department/create">New Department</a>
     </li>
     <li class="nav-item">
         <hr />
@@ -103,27 +103,32 @@
     <!-- Employees table -->
     <div class="table-responsive mt-4 text-center p-3">
         <h5 class="mb-3">Employees</h5>
-        <table class="table table-bordered bg-white rounded">
+        <table class="table table-bordered bg-white rounded align-middle">
             <thead class="table-light">
                 <tr>
                     <th scope="col">Image</th>
                     <th scope="col">First Name</th>
                     <th scope="col">Last Name</th>
                     <th scope="col">Mobile Number</th>
-                    <th scope="col">Action</th>
+                    <th scope="col">Actions</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>
-                        <img src="{{ asset('images/employee.png') }}" class="img-fluid rounded-circle" alt="Employee Image"
-                            style="width: 40px; height: 40px" />
-                    </td>
-                    <td>John</td>
-                    <td>Doe</td>
-                    <td>+1234567890</td>
-                    <td><button class="btn btn-primary btn-sm">View</button></td>
-                </tr>
+                @foreach ($employees as $employees)
+                    <tr>
+                        <td>
+                            <img src="{{ $employees->photo ? asset($employees->photo) : asset('images/employee.png') }}"
+                                class="img-fluid rounded-circle" alt="Employee Image" style="width: 40px; height: 100%" />
+
+                        </td>
+                        <td>{{ $employees->first_name }}</td>
+                        <td>{{ $employees->last_name }}</td>
+                        <td>{{ $employees->mobile_number }}</td>
+                        <td class="position-relative">
+                            <a class="btn btn-primary" href="employee/{{ $employees->id }}">View</a>
+                        </td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
     </div>
