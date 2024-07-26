@@ -26,12 +26,18 @@
             Department
         </a>
         <ul class="dropdown-menu" aria-labelledby="departmentDropdown">
-            <li>
-                <a class="dropdown-item" href="/manager/department">BSE</a>
-            </li>
-            <li>
-                <a class="dropdown-item" href="/manager/department">BSN</a>
-            </li>
+            @if ($departments->isEmpty())
+                <li>
+                    <a class="dropdown-item" href="#">No department available.</a>
+                </li>
+            @else
+                @foreach ($departments as $department)
+                    <li>
+                        <a class="dropdown-item"
+                            href="{{ url('/manager/department/' . $department->id) }}">{{ $department->department_name }}</a>
+                    </li>
+                @endforeach
+            @endif
         </ul>
     </li>
     <li class="nav-item">
@@ -119,20 +125,18 @@
 @endsection
 
 @section('scripts')
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            var dropdownElements = document.querySelectorAll(".dropdown-toggle");
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var dropdownElement = document.getElementById("manageDropdown1");
 
-            dropdownElements.forEach(function(dropdown) {
-                dropdown.addEventListener("click", function(event) {
-                    var dropdownMenu = this.nextElementSibling;
-                    var rect = dropdown.getBoundingClientRect();
-                    dropdownMenu.style.position = "fixed";
-                    dropdownMenu.style.top = rect.bottom - 30 + "px"; // Adjust the top position
-                    dropdownMenu.style.left = rect.left - 87 + "px"; // Adjust the left position
-                    dropdownMenu.style.width = "200px"; // Adjust as needed
-                });
-            });
-        });
-    </script>
+      dropdownElement.addEventListener("click", function (event) {
+        var dropdownMenu = this.nextElementSibling;
+        var rect = dropdownElement.getBoundingClientRect();
+        dropdownMenu.style.position = "fixed";
+        dropdownMenu.style.top = rect.bottom - 30 + "px"; // Adjust the top position
+        dropdownMenu.style.left = rect.left - 87 + "px"; // Adjust the left position
+        dropdownMenu.style.width = "200px"; // Adjust as needed
+      });
+    });
+  </script>
 @endsection

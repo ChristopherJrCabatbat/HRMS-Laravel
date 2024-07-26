@@ -26,12 +26,18 @@
             Department
         </a>
         <ul class="dropdown-menu" aria-labelledby="departmentDropdown">
-            <li>
-                <a class="dropdown-item" href="/manager/department">BSE</a>
-            </li>
-            <li>
-                <a class="dropdown-item" href="/manager/department">BSN</a>
-            </li>
+            @if ($departments->isEmpty())
+                <li>
+                    <a class="dropdown-item" href="#">No department available.</a>
+                </li>
+            @else
+                @foreach ($departments as $department)
+                    <li>
+                        <a class="dropdown-item"
+                            href="{{ url('/manager/department/' . $department->id) }}">{{ $department->department_name }}</a>
+                    </li>
+                @endforeach
+            @endif
         </ul>
     </li>
     <li class="nav-item">

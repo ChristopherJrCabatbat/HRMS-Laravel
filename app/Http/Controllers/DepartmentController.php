@@ -13,8 +13,8 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        // $departments = Department::all();
-        return view('content-pages.department')
+        $departments = Department::all();
+        return view('content-pages.department', compact('departments'))
         // ->with('departments', $departments)
         ;
     }
@@ -24,7 +24,13 @@ class DepartmentController extends Controller
      */
     public function create()
     {
-        return view('content-pages.department-new');
+        $departments = Department::all();
+        // $departmentss = Department::find($id);
+        return view('content-pages.department-new', compact('departments'
+        // , 'departmentss'
+        ))
+        // ->with('departmentss', $departmentss)
+        ;
     }
 
     /**
@@ -32,7 +38,11 @@ class DepartmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $departments = new Department;
+        $departments->department_name = $request->input('department_name');
+        $departments->history = $request->input('history');
+        $departments->save();
+        return redirect('/manager/department/' . $departments->id)->with("message", "Department added successfully!");
     }
 
     /**
@@ -40,7 +50,17 @@ class DepartmentController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $departments = Department::all();
+        $departmentss = Department::find($id);
+        
+        if (!$departmentss) {
+            return redirect()->back()->with('error', 'Department not found.');
+        }
+
+        // return view('content-pages.department', compact('departments'))
+        return view('content-pages.department', compact('departments', 'departmentss'))
+        // ->with('departmentss', $departmentss)
+        ;
     }
 
     /**

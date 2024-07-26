@@ -21,17 +21,25 @@
         <a class="nav-link" href="/manager/leave">Leave</a>
     </li>
     <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="departmentDropdown" role="button"
-            data-bs-toggle="dropdown" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" href="#" id="departmentDropdown" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
             Department
         </a>
         <ul class="dropdown-menu" aria-labelledby="departmentDropdown">
-            <li>
-                <a class="dropdown-item" href="/manager/department">BSE</a>
-            </li>
-            <li>
-                <a class="dropdown-item" href="/manager/department">BSN</a>
-            </li>
+            @if ($departments->isEmpty())
+                <li>
+                    <a class="dropdown-item" href="#">No department available.</a>
+                </li>
+            @else
+                @foreach ($departments as $department)
+                    <li>
+                        {{-- @foreach ($departmentss as $departmentss) --}}
+                            <a class="dropdown-item"
+                                href="{{ url('/manager/department/' . $department->id) }}">{{ $department->department_name }}</a>
+                        {{-- @endforeach --}}
+                    </li>
+                @endforeach
+            @endif
         </ul>
     </li>
     <li class="nav-item">
@@ -56,18 +64,21 @@
             <h3 class="me-2"><i class="fas fa-plus"></i> New Department</h3>
         </div>
         <hr />
-        <form>
+        {{-- <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data"> --}}
+        <form method="POST" action="/manager/department">
+            @csrf
             <div class="mb-3">
                 <label for="firstName" class="form-label">Name:</label>
-                <input type="text" class="form-control" placeholder="Department name" id="firstName" />
+                <input type="text" class="form-control" placeholder="Department name" id="department_name"
+                    name="department_name" />
             </div>
             <div class="mb-3">
-                <label for="lastName" class="form-label">History:</label>
-                <textarea name="" id="" placeholder="Brief department history" class="form-control"></textarea>
+                <label for="history" class="form-label">History:</label>
+                <textarea id="history" rows="4" placeholder="Brief department history" class="form-control" name="history"></textarea>
                 <!-- <input type="text" class="form-control" placeholder="Brief department history" id="lastName" /> -->
             </div>
             <div class="d-grid gap-2">
-                <button class="btn btn-primary" type="button">Add Employee</button>
+                <button class="btn btn-primary" type="submit">Add Employee</button>
             </div>
         </form>
     </div>

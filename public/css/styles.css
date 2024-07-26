@@ -112,3 +112,7 @@ body {
     overflow: hidden;
     position: relative;
   }
+
+  select:hover {
+    cursor: pointer;
+  }

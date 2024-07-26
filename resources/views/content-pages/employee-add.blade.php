@@ -26,12 +26,18 @@
             Department
         </a>
         <ul class="dropdown-menu" aria-labelledby="departmentDropdown">
-            <li>
-                <a class="dropdown-item" href="/manager/department">BSE</a>
-            </li>
-            <li>
-                <a class="dropdown-item" href="/manager/department">BSN</a>
-            </li>
+            @if ($departments->isEmpty())
+                <li>
+                    <a class="dropdown-item" href="#">No department available.</a>
+                </li>
+            @else
+                @foreach ($departments as $department)
+                    <li>
+                        <a class="dropdown-item"
+                            href="{{ url('/manager/department/' . $department->id) }}">{{ $department->department_name }}</a>
+                    </li>
+                @endforeach
+            @endif
         </ul>
     </li>
     <li class="nav-item">
@@ -57,31 +63,31 @@
         <form action="manager/employee">
             <div class="mb-3">
                 <label for="firstName" class="form-label">First name:</label>
-                <input type="text" class="form-control" id="firstName" />
+                <input type="text" class="form-control" id="firstName" placeholder="e.g. John" />
             </div>
             <div class="mb-3">
                 <label for="lastName" class="form-label">Last name:</label>
-                <input type="text" class="form-control" id="lastName" />
+                <input type="text" class="form-control" id="lastName" placeholder="e.g. Doe"/>
             </div>
             <div class="mb-3">
                 <label for="mobileNumber" class="form-label">Mobile number:</label>
-                <input type="text" class="form-control" id="mobileNumber" />
+                <input type="text" class="form-control" id="mobileNumber" placeholder="e.g. 09876543210"/>
             </div>
             <div class="mb-3">
                 <label for="emailAddress" class="form-label">Email address:</label>
-                <input type="email" class="form-control" id="emailAddress" />
+                <input type="email" class="form-control" id="emailAddress" placeholder="e.g. my@email.com"/>
                 <div id="emailHelp" class="form-text">
                     We'll never share your email with anyone else.
                 </div>
             </div>
             <div class="mb-3">
                 <label for="salary" class="form-label">Salary:</label>
-                <input type="text" class="form-control" id="salary" />
+                <input type="text" class="form-control" id="salary" placeholder="e.g. 10000"/>
             </div>
-            <div class="mb-3">
+            {{-- <div class="mb-3">
                 <label for="bank" class="form-label">Bank:</label>
                 <input type="text" class="form-control" id="bank" />
-            </div>
+            </div> --}}
             <div class="mb-3">
                 <label for="gender" class="form-label">Gender:</label>
                 <select class="form-select" id="gender">
@@ -102,7 +108,7 @@
                 </select>
             </div>
             <div class="mb-3">
-                <label for="userImage" class="form-label">Thumb:</label>
+                <label for="userImage" class="form-label">Photo:</label>
                 <input type="file" class="form-control" id="userImage" accept="image/*" />
             </div>
             <div class="d-grid gap-2">

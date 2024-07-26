@@ -4,17 +4,22 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\Department;
+
 class ManagerController extends Controller
 {
     public function content_dashboard() {
-        return view('content-pages.dashboard');
+        $departments = Department::all();
+        return view('content-pages.dashboard', compact('departments'));
     }
     
-    public function recruitment() {
-        return view('content-pages.recruitment');
+    public function recruitmentDashboard() {
+        $departments = Department::all();
+        return view('content-pages.recruitment', compact('departments'));
     }
 
     public function payroll() {
-        return view('content-pages.payroll');
+        $departments = Department::all();
+        return view('content-pages.payroll', compact('departments'));
     }
 }

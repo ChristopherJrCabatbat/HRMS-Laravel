@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Leave;
+use App\Models\Department;
 
 class LeaveController extends Controller
 {
@@ -14,7 +15,8 @@ class LeaveController extends Controller
     public function index()
     {
         // $leaves = Leave::all();
-        return view('content-pages.leave')
+        $departments = Department::all();
+        return view('content-pages.leave', compact('departments'))
         // ->with('leaves', $leaves)
         ;
     }

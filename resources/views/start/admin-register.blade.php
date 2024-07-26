@@ -25,7 +25,7 @@
             <p class="text-center fs-3">Sign up</p>
         </div>
         <div class="recruitment-form container border p-5 rounded-3 mt-3">
-            <form method="POST" action="{{ route('register') }}">
+            <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                 @csrf
 
                 {{-- Name --}}
@@ -67,7 +67,7 @@
                 {{-- Picture --}}
                 <div class="mb-3">
                     <label for="userImage" class="form-label">Upload Picture:</label>
-                    <input type="file" class="form-control" id="userImage" name="photo" accept="image/*" />
+                    <input type="file" class="form-control" id="photo" name="photo" accept="image/*" />
                 </div>
 
                 <div class="d-grid my-3">

@@ -61,7 +61,7 @@ Route::group([
     Route::resource('department', DepartmentController::class);
 
     // Recruitment
-    Route::get('/recruitment', [ManagerController::class, 'recruitment'])->name('recruitment');
+    Route::get('/recruitment-dashboard', [ManagerController::class, 'recruitmentDashboard'])->name('recruitmentDashboard');
 
     // Payroll
     Route::get('/payroll', [ManagerController::class, 'payroll'])->name('payroll');

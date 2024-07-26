@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Attendance;
+use App\Models\Department;
 
 
 class AttendanceController extends Controller
@@ -15,7 +16,8 @@ class AttendanceController extends Controller
     public function index()
     {
         // $attendances = Attendance::all();
-        return view('content-pages.attendance')
+        $departments = Department::all();
+        return view('content-pages.attendance', compact('departments'))
         // ->with('attendances', $attendances)
         ;
     }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Employee;
+use App\Models\Department;
 
 class EmployeeController extends Controller
 {
@@ -13,8 +14,9 @@ class EmployeeController extends Controller
      */
     public function index()
     {
+        $departments = Department::all();
         // $employees = Employee::all();
-        return view('content-pages.employee')
+        return view('content-pages.employee', compact('departments'))
         // ->with('employees', $employees)
         ;
     }
