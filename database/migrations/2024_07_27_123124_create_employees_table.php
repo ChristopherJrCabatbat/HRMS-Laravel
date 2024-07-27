@@ -16,6 +16,9 @@ return new class extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->string('mobile_number'); // Corrected from varchar to string
+            $table->string('emergency_mobile_number');
+            $table->string('bank');
+            $table->string('account_number');
             $table->string('email'); // Changed from text to string
             $table->integer('salary');
             $table->string('gender');

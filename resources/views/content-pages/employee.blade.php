@@ -82,7 +82,6 @@
                         <td>
                             <img src="{{ $employees->photo ? asset($employees->photo) : asset('images/employee.png') }}"
                                 class="img-fluid rounded-circle" alt="Employee Image" style="width: 40px; height: 100%" />
-
                         </td>
                         <td>{{ $employees->first_name }}</td>
                         <td>{{ $employees->last_name }}</td>
@@ -110,19 +109,11 @@
                                         </form>
                                         
                                     </li>
-                                    {{-- action="employee/{{$employees->id}}" --}}
-                                    {{-- <form action="{{ route('students.destroy', $stud->id) }}"
-                                  method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <input class="delete" type="submit" name="submit" value="Delete" />
-                                </form> --}}
                                 </ul>
                             </div>
                         </td>
                     </tr>
                 @endforeach
-                <!-- Add more rows as needed -->
             </tbody>
         </table>
     </div>

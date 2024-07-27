@@ -78,6 +78,19 @@
                         value="{{ $employee->mobile_number }}" placeholder="e.g. 09876543210" />
                 </div>
                 <div class="mb-3">
+                    <label for="emergency_mobile_number" class="form-label">Emergency Contact Mobile number:</label>
+                    <input disabled type="text" class="form-control" id="emergency_mobile_number" name="emergency_mobile_number" value="{{ $employee->emergency_mobile_number }}"
+                        placeholder="e.g. 09876543210" />
+                </div>
+                <div class="mb-3">
+                    <label for="bank" class="form-label">Bank:</label>
+                    <input disabled type="text" class="form-control" id="bank" name="bank" value="{{ $employee->bank }}" placeholder="e.g. GCash" />
+                </div>
+                <div class="mb-3">
+                    <label for="account_number" class="form-label">Account Number:</label>
+                    <input disabled type="text" class="form-control" id="account_number" name="account_number" value="{{ $employee->account_number }}" placeholder="e.g. 09876543210" />
+                </div>
+                <div class="mb-3">
                     <label for="emailAddress" class="form-label">Email address:</label>
                     <input disabled type="email" class="form-control" id="emailAddress" name="email"
                         value="{{ $employee->email }}" placeholder="e.g. my@email.com" />
@@ -86,7 +99,7 @@
                     </div>
                 </div>
                 <div class="mb-3">
-                    <label for="salary" class="form-label">Salary:</label>
+                    <label for="salary" class="form-label">Salary(₱):</label>
                     <input disabled type="text" class="form-control" id="salary" name="salary"
                         value="{{ $employee->salary }}" placeholder="e.g. 10000" />
                 </div>

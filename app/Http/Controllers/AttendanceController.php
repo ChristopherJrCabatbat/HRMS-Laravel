@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Attendance;
 use App\Models\Department;
+use App\Models\Employee;
 
 
 class AttendanceController extends Controller
@@ -17,8 +18,8 @@ class AttendanceController extends Controller
     {
         // $attendances = Attendance::all();
         $departments = Department::all();
-        return view('content-pages.attendance', compact('departments'))
-        // ->with('attendances', $attendances)
+        $employees = Employee::all();
+        return view('content-pages.attendance', compact('departments', 'employees'))
         ;
     }
 

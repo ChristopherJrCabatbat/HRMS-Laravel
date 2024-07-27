@@ -71,45 +71,36 @@
             <tbody>
                 <tr>
                     <td class="align-middle">July 23, 2024</td>
-                    <td>
-                        <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                Dropdown button
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                Dropdown button
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </td>
+                    <form action="">
+                        @csrf
+                        <td>
+                            <select class="form-select" id="employee" name="employee">
+                                <option selected disabled>Select Employee</option>
+                                @if ($departments->isEmpty())
+                                    <option value="No department available" disabled>No employee available.</option>
+                                @else
+                                    @foreach ($employees as $employees)
+                                        <option value="{{ $employees->first_name }} {{ $employees->last_name }}">
+                                            {{ $employees->first_name }} {{ $employees->last_name }}
+                                        </option>
+                                    @endforeach
+                                @endif
+                            </select>
+                        </td>
+                        <td>
+                            <select class="form-select" id="employee" name="employee">
+                                <option selected disabled>Select Status</option>
+                                <option value="Present">Present</option>
+                                <option value="Absent">Absent</option>
+                                <option value="Unavailable">Unavailable</option>
+                            </select>
+                        </td>
+                    </form>
                 </tr>
             </tbody>
         </table>
         <div class="text-center">
-            <button class="btn btn-outline-primary rounded-pill px-4">
+            <button class="btn btn-outline-primary rounded-pill px-4" type="submit">
                 Sign in
             </button>
         </div>
@@ -141,9 +132,9 @@
 @endsection
 
 @section('scripts')
-    {{-- <script>
+    <script>
         document.addEventListener("DOMContentLoaded", function() {
-            var dropdownElements = document.querySelectorAll(".dropdown-toggle");
+            var dropdownElements = document.querySelectorAll(".dropdown-toggles");
 
             dropdownElements.forEach(function(dropdown) {
                 dropdown.addEventListener("click", function(event) {
@@ -156,5 +147,5 @@
                 });
             });
         });
-    </script> --}}
+    </script>
 @endsection

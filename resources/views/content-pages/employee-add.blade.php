@@ -64,7 +64,7 @@
             @csrf
             <div class="mb-3">
                 <label for="firstName" class="form-label">First name:</label>
-                <input type="text" class="form-control" id="first_name" name="first_name" placeholder="e.g. John" />
+                <input type="text" class="form-control" id="first_name" name="first_name" placeholder="e.g. John" autofocus/>
             </div>
             <div class="mb-3">
                 <label for="lastName" class="form-label">Last name:</label>
@@ -76,6 +76,19 @@
                     placeholder="e.g. 09876543210" />
             </div>
             <div class="mb-3">
+                <label for="emergency_mobile_number" class="form-label">Emergency Contact Mobile number:</label>
+                <input type="text" class="form-control" id="emergency_mobile_number" name="emergency_mobile_number"
+                    placeholder="e.g. 09876543210" />
+            </div>
+            <div class="mb-3">
+                <label for="bank" class="form-label">Bank:</label>
+                <input type="text" class="form-control" id="bank" name="bank" placeholder="e.g. GCash" />
+            </div>
+            <div class="mb-3">
+                <label for="account_number" class="form-label">Account Number:</label>
+                <input type="text" class="form-control" id="account_number" name="account_number" placeholder="e.g. 09876543210" />
+            </div>
+            <div class="mb-3">
                 <label for="emailAddress" class="form-label">Email address:</label>
                 <input type="email" class="form-control" id="emailAddress" name="email"
                     placeholder="e.g. my@email.com" />
@@ -84,7 +97,7 @@
                 </div>
             </div>
             <div class="mb-3">
-                <label for="salary" class="form-label">Salary:</label>
+                <label for="salary" class="form-label">Salary(₱):</label>
                 <input type="text" class="form-control" id="salary" name="salary" placeholder="e.g. 10000" />
             </div>
             {{-- <div class="mb-3">
@@ -117,7 +130,7 @@
 
             <div class="mb-3">
                 <label for="userImage" class="form-label">Photo:</label>
-                <input type="file" class="form-control" id="userImage" name="photo" accept="image/*" />
+                <input required type="file" class="form-control" id="userImage" name="photo" accept="image/*" />
             </div>
             <div class="d-grid gap-2">
                 <button class="btn btn-primary" type="submit">Add Employee</button>

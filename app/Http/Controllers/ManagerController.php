@@ -47,6 +47,7 @@ class ManagerController extends Controller
 
     public function payroll() {
         $departments = Department::all();
-        return view('content-pages.payroll', compact('departments'));
+        $employees = Employee::all();
+        return view('content-pages.payroll', compact('departments', 'employees'));
     }
 }

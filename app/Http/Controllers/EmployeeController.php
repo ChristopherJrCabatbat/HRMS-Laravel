@@ -42,6 +42,9 @@ class EmployeeController extends Controller
         $employees->first_name = $request->input('first_name');
         $employees->last_name = $request->input('last_name');
         $employees->mobile_number = $request->input('mobile_number');
+        $employees->emergency_mobile_number = $request->input('emergency_mobile_number');
+        $employees->bank = $request->input('bank');
+        $employees->account_number = $request->input('account_number');
         $employees->email = $request->input('email');
         $employees->salary = $request->input('salary');
         $employees->gender = $request->input('gender');
@@ -112,6 +115,9 @@ class EmployeeController extends Controller
         $employees->first_name = $request->input('first_name');
         $employees->last_name = $request->input('last_name');
         $employees->mobile_number = $request->input('mobile_number');
+        $employees->emergency_mobile_number = $request->input('emergency_mobile_number');
+        $employees->bank = $request->input('bank');
+        $employees->account_number = $request->input('account_number');
         $employees->email = $request->input('email');
         $employees->salary = $request->input('salary');
         $employees->gender = $request->input('gender');

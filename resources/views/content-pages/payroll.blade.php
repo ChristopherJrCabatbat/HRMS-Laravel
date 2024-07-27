@@ -66,27 +66,28 @@
                     <th scope="col">First Name</th>
                     <th scope="col">Last Name</th>
                     <th scope="col">Account Number</th>
-                    <th scope="col">Bank Name</th>
+                    <th scope="col">Bank</th>
                     <th scope="col">Salary</th>
                     <th scope="col">Action</th>
                 </tr>
             </thead>
             <tbody>
+                @foreach ($employees as $employees)
                 <tr>
                     <td>
-                        <img src="images/employee.png" class="img-fluid rounded-circle" alt="Employee Image"
-                            style="width: 40px; height: 40px" />
+                        <img src="{{ $employees->photo ? asset($employees->photo) : asset('images/employee.png') }}"
+                        class="img-fluid rounded-circle" alt="Employee Image" style="width: 40px; height: 100%" />
                     </td>
-                    <td>John</td>
-                    <td>Doe</td>
-                    <td>+1234567890</td>
-                    <td>johndoe@gmail.com</td>
-                    <td>Manager</td>
+                    <td>{{ $employees->first_name }}</td>
+                    <td>{{ $employees->last_name }}</td>
+                    <td>{{ $employees->account_number }}</td>
+                    <td>{{ $employees->bank }}</td>
+                    <td>₱{{ $employees->salary }}</td>
                     <td class="position-relative">
                         <button class="btn btn-primary">Pay</button>
                     </td>
                 </tr>
-                <!-- Add more rows as needed -->
+                @endforeach
             </tbody>
         </table>
     </div>
