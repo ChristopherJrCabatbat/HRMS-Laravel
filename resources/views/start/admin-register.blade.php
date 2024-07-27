@@ -30,7 +30,7 @@
 
                 {{-- Name --}}
                 <div class="mb-3 form-floating">
-                    <input required type="text" class="form-control" id="name" name="name" aria-describedby="emailHelp"
+                    <input required type="text" autofocus class="form-control" id="name" name="name" aria-describedby="emailHelp"
                         placeholder="" />
                     <label for="exampleInputEmail1" class="form-label">Name:</label>
                 </div>

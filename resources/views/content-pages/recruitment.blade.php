@@ -71,17 +71,24 @@
                 </tr>
             </thead>
             <tbody>
+                @foreach ($recruitments as $recruitments)
+                    
                 <tr>
-                    <td>John</td>
-                    <td>Doe</td>
-                    <td>+1234567890</td>
-                    <td>johndoe@gmail.com</td>
-                    <td>Manager</td>
+                    <td>{{ $recruitments->first_name }}</td>
+                    <td>{{ $recruitments->last_name }}</td>
+                    <td>{{ $recruitments->mobile_number }}</td>
+                    <td>{{ $recruitments->email }}</td>
+                    <td>{{ $recruitments->position }}</td>
                     <td class="position-relative">
-                        <button class="btn btn-danger">Delete</button>
+                        {{-- <button class="btn btn-danger">Delete</button> --}}
+                        <form action="recruitment-dashboard/{{ $recruitments->id }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
                     </td>
                 </tr>
-                <!-- Add more rows as needed -->
+                @endforeach
             </tbody>
         </table>
     </div>

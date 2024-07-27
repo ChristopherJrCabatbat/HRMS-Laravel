@@ -54,51 +54,51 @@
 @endsection
 
 @section('main-content')
-    <div class="row row-cols-1 row-cols-md-3 g-2">
-        <div class="col">
-            <div class="card h-100 card-min-width">
-                <div class="card-body d-flex align-items-center px-4 py-2">
-                    <img src="{{ asset('images/employee.png') }}" class="card-img-icon me-3" alt="Icon" />
-                    <div class="flex-grow-1">
-                        <p class="card-text mb-0 text-end fs-5">Managers</p>
-                        <h5 class="card-title text-end fs-2">3</h5>
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <small class="text-muted">Managers</small>
+<div class="row row-cols-1 row-cols-md-3 g-2">
+    <div class="col">
+        <div class="card h-100 card-min-width">
+            <div class="card-body d-flex align-items-center px-4 py-2">
+                <img src="{{ asset('images/employee.png') }}" class="card-img-icon me-3" alt="Icon" />
+                <div class="flex-grow-1">
+                    <p class="card-text mb-0 text-end fs-5">Managers</p>
+                    <h5 class="card-title text-end fs-2">{{ $managersCount }}</h5>
                 </div>
             </div>
-        </div>
-        <div class="col">
-            <div class="card h-100 card-min-width">
-                <div class="card-body d-flex align-items-center px-4 py-2">
-                    <img src="{{ asset('images/employee.png') }}" class="card-img-icon me-3" alt="Icon" />
-                    <div class="flex-grow-1">
-                        <p class="card-text mb-0 text-end fs-5">Departments</p>
-                        <h5 class="card-title text-end fs-2">5</h5>
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <small class="text-muted">Available Departments</small>
-                </div>
-            </div>
-        </div>
-
-        <div class="col">
-            <div class="card h-100 card-min-width">
-                <div class="card-body d-flex align-items-center px-4 py-2">
-                    <img src="{{ asset('images/employee.png') }}" class="card-img-icon me-3" alt="Icon" />
-                    <div class="flex-grow-1">
-                        <p class="card-text mb-0 text-end fs-5">Employees</p>
-                        <h5 class="card-title text-end fs-2">5</h5>
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <small class="text-muted">Employee's Total Count</small>
-                </div>
+            <div class="card-footer">
+                <small class="text-muted">Managers</small>
             </div>
         </div>
     </div>
+    <div class="col">
+        <div class="card h-100 card-min-width">
+            <div class="card-body d-flex align-items-center px-4 py-2">
+                <img src="{{ asset('images/employee.png') }}" class="card-img-icon me-3" alt="Icon" />
+                <div class="flex-grow-1">
+                    <p class="card-text mb-0 text-end fs-5">Departments</p>
+                    <h5 class="card-title text-end fs-2">{{ $departmentsCount }}</h5>
+                </div>
+            </div>
+            <div class="card-footer">
+                <small class="text-muted">Available Departments</small>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card h-100 card-min-width">
+            <div class="card-body d-flex align-items-center px-4 py-2">
+                <img src="{{ asset('images/employee.png') }}" class="card-img-icon me-3" alt="Icon" />
+                <div class="flex-grow-1">
+                    <p class="card-text mb-0 text-end fs-5">Employees</p>
+                    <h5 class="card-title text-end fs-2">{{ $employeesCount }}</h5>
+                </div>
+            </div>
+            <div class="card-footer">
+                <small class="text-muted">Employee's Total Count</small>
+            </div>
+        </div>
+    </div>
+</div>
+
 
     <!-- Employees table -->
     <div class="table-responsive mt-4 text-center p-3">

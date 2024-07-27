@@ -100,11 +100,7 @@
                                     </li>
                                     <li>
                                         <a class="dropdown-item" href="employee/{{ $employees->id }}/edit">Edit</a>
-                                        {{-- employee/{{$employees->id}}/edit --}}
                                     </li>
-
-
-                                    {{-- <li><a class="dropdown-item" href="employee/{id}">Delete</a> </li>--}}
                                     
                                     <li>
                                         <form action="employee/{{ $employees->id }}" method="POST">

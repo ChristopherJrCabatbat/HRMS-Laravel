@@ -31,14 +31,16 @@
       <p class="text-center fs-3">Candidate Application Form</p>
     </div>
     <div class="recruitment-form container border p-5 rounded-3 mt-3">
-      <form>
+      <form method="POST" action="{{ route('storeRecruitment') }}">
+        @csrf
         <div class="mb-3 form-floating">
           <input
-            type="email"
+            type="text"
             class="form-control"
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
             placeholder=""
+            name="first_name"
           />
           <label for="exampleInputEmail1" class="form-label"
             >First name:</label
@@ -46,11 +48,12 @@
         </div>
         <div class="mb-3  form-floating">
           <input
-            type="email"
+            type="text"
             class="form-control"
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
             placeholder=""
+            name="last_name"
           />
           <label for="exampleInputEmail1" class="form-label"
             >Last name:</label
@@ -58,11 +61,12 @@
         </div>
         <div class="mb-3  form-floating">
           <input
-            type="email"
+            type="text"
             class="form-control"
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
             placeholder=""
+            name="position"
           />
           <label for="exampleInputEmail1" class="form-label">Position:</label>
         </div>
@@ -73,6 +77,7 @@
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
             placeholder=""
+            name="email"
           />
           <label for="exampleInputEmail1" class="form-label">Email:</label>
           <div id="emailHelp" class="form-text">
@@ -81,18 +86,19 @@
         </div>
         <div class="mb-3  form-floating">
           <input
-            type="email"
+            type="text"
             class="form-control"
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
             placeholder=""
+            name="mobile_number"
           />
-          <label for="exampleInputEmail1" class="form-label">Phone:</label>
+          <label for="exampleInputEmail1" class="form-label">Mobile Number:</label>
         </div>
 
         <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
         <div class="d-grid">
-          <button class="btn btn-primary" type="button">Submit</button>
+          <button class="btn btn-primary" type="submit">Submit</button>
         </div>
       </form>
     </div>

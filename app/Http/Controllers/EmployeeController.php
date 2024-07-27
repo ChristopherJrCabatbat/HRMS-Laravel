@@ -16,9 +16,7 @@ class EmployeeController extends Controller
     {
         $departments = Department::all();
         $employees = Employee::all();
-        return view('content-pages.employee', compact('departments', 'employees'))
-            // ->with('employees', $employees)
-        ;
+        return view('content-pages.employee', compact('departments', 'employees'));
     }
 
     /**
@@ -105,7 +103,26 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $request->validate([
+            // 'first_name' => 'required|string|max:255',
+            // 'photo' => 'nullable|file|image|max:10240', 
+        ]);
+
         $employees = Employee::find($id);
+        $employees->first_name = $request->input('first_name');
+        $employees->last_name = $request->input('last_name');
+        $employees->mobile_number = $request->input('mobile_number');
+        $employees->email = $request->input('email');
+        $employees->salary = $request->input('salary');
+        $employees->gender = $request->input('gender');
+        $employees->department = $request->input('department');
+       
+        if ($request->hasFile('photo')) {
+            $fileName = time() . '_' . $request->file('photo')->getClientOriginalName();
+            $path = $request->file('photo')->storeAs('images', $fileName, 'public');
+            $employees->photo = '/storage/' . $path;
+        }
+
         $employees->save();
         return redirect('/manager/employee')->with("message", "Employee updated successfully!");
     }

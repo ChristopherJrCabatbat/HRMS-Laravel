@@ -7,6 +7,7 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\LeaveController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\RecruitmentController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -26,6 +27,8 @@ Route::get('/', function () {
 Route::get('/recruitment', function () {
     return view('start.recruitment');
 });
+Route::post('/storeRecruitment', [ManagerController::class, 'storeRecruitment'])->name('storeRecruitment');
+
 
 Route::get('/admin', function () {
     return view('start.admin');
@@ -41,7 +44,7 @@ Route::get('/admin-register', function () {
 
 // Manager Routes
 Route::group([
-    'prefix' => 'manager', 'as' => 'manager.', 
+    'prefix' => 'manager', 'as' => 'manager.',
     'middleware' => ['auth', 'verified'],
 ], function () {
 
@@ -61,11 +64,11 @@ Route::group([
     Route::resource('department', DepartmentController::class);
 
     // Recruitment
-    Route::get('/recruitment-dashboard', [ManagerController::class, 'recruitmentDashboard'])->name('recruitmentDashboard');
+    // Route::get('/recruitment-dashboard', [ManagerController::class, 'recruitmentDashboard'])->name('recruitmentDashboard');
+    Route::resource('recruitment-dashboard', RecruitmentController::class);
 
     // Payroll
     Route::get('/payroll', [ManagerController::class, 'payroll'])->name('payroll');
-
 });
 
 
@@ -79,7 +82,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 
 Route::get('admin/dashboard', [LoginController::class, 'index'])->middleware(['auth', 'login']);
