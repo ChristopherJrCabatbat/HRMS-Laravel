@@ -1,6 +1,6 @@
 @extends('content-pages.layout')
 
-@section('title', 'Attendace')
+@section('title', 'Attendance')
 
 @section('styles-links')
 
@@ -60,74 +60,91 @@
             <h3 class="me-2"><i class="fas fa-plus"></i> Employee Attendance</h3>
         </div>
         <hr />
-        <table class="table text-center align-middle">
-            <thead class="table-light">
-                <tr>
-                    <th>Date</th>
-                    <th>Employees</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="align-middle">July 23, 2024</td>
-                    <form action="">
-                        @csrf
+        <form method="POST" action="/manager/attendance">
+            @csrf
+            <table class="table text-center align-middle">
+                <thead class="table-light">
+                    <tr>
+                        <th>Date</th>
+                        <th>Employees</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="align-middle">{{ \Carbon\Carbon::now()->format('F j, Y') }}</td>
                         <td>
-                            <select class="form-select" id="employee" name="employee">
+                            <select class="form-select" id="name" name="name" required>
                                 <option selected disabled>Select Employee</option>
-                                @if ($departments->isEmpty())
-                                    <option value="No department available" disabled>No employee available.</option>
+                                @if ($employees->isEmpty())
+                                    <option value="No employee available." disabled>No employee available.</option>
                                 @else
-                                    @foreach ($employees as $employees)
-                                        <option value="{{ $employees->first_name }} {{ $employees->last_name }}">
-                                            {{ $employees->first_name }} {{ $employees->last_name }}
+                                    @foreach ($employees as $employee)
+                                        <option value="{{ $employee->first_name }} {{ $employee->last_name }}">
+                                            {{ $employee->first_name }} {{ $employee->last_name }}
                                         </option>
                                     @endforeach
                                 @endif
                             </select>
                         </td>
                         <td>
-                            <select class="form-select" id="employee" name="employee">
+                            <select class="form-select" id="status" name="status" required>
                                 <option selected disabled>Select Status</option>
                                 <option value="Present">Present</option>
                                 <option value="Absent">Absent</option>
                                 <option value="Unavailable">Unavailable</option>
                             </select>
                         </td>
-                    </form>
-                </tr>
-            </tbody>
-        </table>
-        <div class="text-center">
-            <button class="btn btn-outline-primary rounded-pill px-4" type="submit">
-                Sign in
-            </button>
-        </div>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="text-center">
+                <button class="btn btn-outline-primary rounded-pill px-4" type="submit">
+                    Sign in
+                </button>
+            </div>
+        </form>
+
         <div class="d-flex justify-content-center align-items-center mb-3 mt-4">
             <h5 class="me-2"><i class="fas fa-plus"></i> Signed in Employee/s</h5>
         </div>
         <hr />
+        <p>Only present employees are displayed here.</p>
         <table class="table table-bordered bg-white rounded text-center align-middle">
             <thead class="table-light">
                 <tr>
                     <th scope="col">Date</th>
-                    <th scope="col">Arrival</th>
-                    <th scope="col">Departure</th>
                     <th scope="col">Name</th>
+                    <th scope="col">Arrival Time</th>
+                    <th scope="col">Departure Time</th>
                     <th scope="col">Action</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>July 23, 2024</td>
-                    <td class="fw-bold">6:56 p.m.</td>
-                    <td class="fw-bold">8:00 p.m.</td>
-                    <td>John Doe</td>
-                    <td><button class="btn btn-primary btn-sm">Sign-out</button></td>
-                </tr>
+                @forelse ($attendances as $attendance)
+                    <tr>
+                        <td>{{ $attendance->formatted_date }}</td>
+                        <td>{{ $attendance->name }}</td>
+                        <td class="fw-bold">{{ $attendance->formatted_arrival }}</td>
+                        <td class="fw-bold">
+                            {{ $attendance->formatted_departure }}
+                        </td>
+                        <td>
+                            <form action="{{ route('manager.attendance.update', $attendance->id) }}" method="POST">
+                                @csrf
+                                @method('PUT')
+                                <button class="btn btn-primary btn-sm" type="submit">Sign-out</button>
+                            </form>
+                        </td>
+                    </tr>
+                @empty
+                    <tr>
+                        <td colspan="5" class="text-center">There is no signed-in employee</td>
+                    </tr>
+                @endforelse
             </tbody>
         </table>
+        
     </div>
 @endsection
 
