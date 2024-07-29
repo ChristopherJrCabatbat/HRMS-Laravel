@@ -8,7 +8,6 @@
 
 @section('sidebar')
     <li class="nav-item">
-        {{-- <a class="nav-link" href="{{ route('manager.content_dashboard') }}">Dashboard</a> --}}
         <a class="nav-link" href="/manager/content_dashboard">Dashboard</a>
     </li>
     <li class="nav-item">
@@ -62,70 +61,60 @@
             </h3>
         </div>
         <hr />
-        <table class="table text-center align-middle">
-            <thead class="table-light">
-                <tr>
-                    <th>Start Date</th>
-                    <th>End Date</th>
-                    <th>Status</th>
-                    <th>Employee</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <input type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-                    </td>
-                    <td>
-                        <input type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-                    </td>
-                    <td>
-                        <div class="dropdown">
-                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                Dropdown link
-                            </a>
-
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="dropdown">
-                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                Dropdown link
-                            </a>
-
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <div class="text-center">
-            <button class="btn btn-outline-primary rounded-pill px-4">
-                Submit
-            </button>
-        </div>
+        <form method="POST" action="/manager/leave">
+            @csrf
+            <table class="table text-center align-middle">
+                <thead class="table-light">
+                    <tr>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Status</th>
+                        <th>Employee</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <input type="date" name="start_date" class="form-control" id="start_date"
+                                aria-describedby="emailHelp" />
+                        </td>
+                        <td>
+                            <input type="date" class="form-control" name="end_date" id="end_date"
+                                aria-describedby="emailHelp" />
+                        </td>
+                        <td>
+                            <select class="form-select" id="status" name="status" required>
+                                <option selected disabled>Select Status</option>
+                                <option value="Approved">Approved</option>
+                                <option value="Disapproved">Disapproved</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select class="form-select" id="name" name="name" required>
+                                <option selected disabled>Select Employee</option>
+                                @if ($employees->isEmpty())
+                                    <option value="No employee available." disabled>No employee available.</option>
+                                @else
+                                    @foreach ($employees as $employee)
+                                        <option value="{{ $employee->first_name }} {{ $employee->last_name }}">
+                                            {{ $employee->first_name }} {{ $employee->last_name }}
+                                        </option>
+                                    @endforeach
+                                @endif
+                            </select>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="text-center">
+                <button class="btn btn-outline-primary rounded-pill px-4">
+                    Submit
+                </button>
+            </div>
+        </form>
         <div class="d-flex justify-content-center align-items-center mb-3 mt-4">
             <h5 class="me-2">
-                <i class="fas fa-plus"></i>Approved Application/s
+                <i class="fas fa-plus"></i>Leave Application/s
             </h5>
         </div>
         <hr />
@@ -139,12 +128,18 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>July 23, 2024</td>
-                    <td>July 23, 2024</td>
-                    <td>Approved</td>
-                    <td>John Doe</td>
-                </tr>
+                @forelse ($leaves as $leaves)
+                    <tr>
+                        <td>{{ \Carbon\Carbon::parse($leaves->start_date)->format('F j, Y') }}</td>
+                        <td>{{ \Carbon\Carbon::parse($leaves->end_date)->format('F j, Y') }}</td>
+                        <td>{{ $leaves->status }}</td>
+                        <td>{{ $leaves->name }}</td>
+                    </tr>
+                @empty
+                    <tr>
+                        <td colspan="4" class="text-center">There is currently no leave to be managed.</td>
+                    </tr>
+                @endforelse
             </tbody>
         </table>
     </div>

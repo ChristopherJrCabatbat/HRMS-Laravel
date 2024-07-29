@@ -62,30 +62,11 @@ class AttendanceController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    // public function store(Request $request)
-    // {
-    //     $request->validate([
-    //         // 'first_name' => 'required|string|max:255',
-    //     ]);
-
-    //     $currentDate = Carbon::now()->toDateString(); // Get current date
-    //     $currentTime = Carbon::now()->toTimeString(); // Get current time
-
-    //     $attendances = new Attendance;
-    //     $attendances->name = $request->input('name');
-    //     $attendances->status = $request->input('status');
-    //     $attendances->date = $currentDate; // Set current date
-    //     $attendances->arrival = $currentTime; // Set current time
-
-    //     $attendances->save();
-    //     return redirect('/manager/attendance')->with("message", "Employee signed-in successfully!");
-    // }
 
     public function store(Request $request)
     {
         $request->validate([
             // 'name' => 'required|string|max:255',
-            // 'status' => 'required|string',
         ]);
 
         // Set the timezone to Asia/Manila

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Models\Leave;
 use App\Models\Department;
+use App\Models\Employee;
+
 
 class LeaveController extends Controller
 {
@@ -14,11 +16,11 @@ class LeaveController extends Controller
      */
     public function index()
     {
-        // $leaves = Leave::all();
+        $leaves = Leave::all();
         $departments = Department::all();
-        return view('content-pages.leave', compact('departments'))
-        // ->with('leaves', $leaves)
-        ;
+        $employees = Employee::all();
+        
+        return view('content-pages.leave', compact('departments', 'employees', 'leaves'));
     }
 
     /**
@@ -34,7 +36,18 @@ class LeaveController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            // 'name' => 'required|string|max:255',
+        ]);
+
+        $leaves = new Leave;
+        $leaves->start_date = $request->input('start_date');
+        $leaves->end_date = $request->input('end_date');
+        $leaves->status = $request->input('status');
+        $leaves->name = $request->input('name');
+
+        $leaves->save();
+        return redirect('/manager/leave')->with("message", "Leave managed successfully!");
     }
 
     /**

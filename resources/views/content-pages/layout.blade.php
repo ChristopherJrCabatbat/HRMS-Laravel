@@ -37,7 +37,7 @@
                                         alt="User Image" class="rounded-circle" style="width: 30px; height: 30px;">
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('profile.edit') }}">Profile</a></li>
                                     <li>
                                         <hr class="dropdown-divider">
                                     </li>

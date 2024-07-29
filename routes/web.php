@@ -85,4 +85,4 @@ Route::middleware('auth')->group(function () {
 require __DIR__ . '/auth.php';
 
 
-Route::get('admin/dashboard', [LoginController::class, 'index'])->middleware(['auth', 'login']);
+// Route::get('admin/dashboard', [LoginController::class, 'index'])->middleware(['auth', 'login']);

@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Profile') }}
+            <a class="go-back" href="/manager/content_dashboard" style="background-color: rgb(13, 110, 253, 1); color:white; padding: 12px; border-radius: 5px;"><i class="fas fa-arrow-left"></i> Go back to Dashboard</a>
         </h2>
     </x-slot>
 
