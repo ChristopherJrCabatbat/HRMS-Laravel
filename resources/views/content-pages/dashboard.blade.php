@@ -8,7 +8,7 @@
 
 @section('sidebar')
     <li class="nav-item">
-        <a class="nav-link side-active" href="content_dashboard"><i class="fas fa-gauge-simple"></i> Dashboard</a>
+        <a class="nav-link side-active" href="content_dashboard"><i class="fas fa-house" style="color: black"></i> Dashboard</a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="employee">Employee</a>
