@@ -8,21 +8,21 @@
 
 @section('sidebar')
     <li class="nav-item">
-        <a class="nav-link" href="/manager/content_dashboard">Dashboard</a>
+        <a class="nav-link" href="content_dashboard"><i class="fa-solid fa-gauge me-2"></i> Dashboard</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="/manager/employee">Employee</a>
+        <a class="nav-link" href="employee"><i class="me-2 fa-solid fa-user"></i> Employee</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="/manager/attendance">Attendance</a>
+        <a class="nav-link" href="attendance"><i class="me-2 fa-solid fa-clipboard-user"></i> Attendance</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link side-active" href="/manager/leave">Leave</a>
+        <a class="nav-link side-active" href="leave"><i class="me-2 fa-solid fa-arrow-right-from-bracket"></i> Leave</a>
     </li>
     <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="departmentDropdown" role="button" data-bs-toggle="dropdown"
             aria-expanded="false">
-            Department
+            <i class="me-2 fa-solid fa-folder"></i> Department
         </a>
         <ul class="dropdown-menu" aria-labelledby="departmentDropdown">
             @if ($departments->isEmpty())
@@ -40,16 +40,16 @@
         </ul>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="/manager/department/create">New Department</a>
+        <a class="nav-link" href="/manager/department/create"><i class="me-2 fa-solid fa-plus"></i> New Department</a>
     </li>
     <li class="nav-item">
         <hr />
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="/manager/recruitment-dashboard">Recruitment</a>
+        <a class="nav-link" href="recruitment-dashboard"><i class="me-2 fa-solid fa-database"></i> Recruitment</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="/manager/payroll">Payroll</a>
+        <a class="nav-link" href="payroll"><i class="me-2 fa-solid fa-dollar-sign"></i> Payroll</a>
     </li>
 @endsection
 
@@ -57,7 +57,7 @@
     <div class="recruitment-form container border p-4 table-responsive">
         <div class="d-flex justify-content-center align-items-center mb-3">
             <h3 class="me-2">
-                <i class="fas fa-plus"></i> Employee Leave Management
+                <i class="me-2 fa-solid fa-arrow-right-from-bracket"></i> Employee Leave Management
             </h3>
         </div>
         <hr />
@@ -108,13 +108,13 @@
             </table>
             <div class="text-center">
                 <button class="btn btn-outline-primary rounded-pill px-4">
-                    Submit
+                    Submit<i class="ms-2 fa-solid fa-arrow-right-from-bracket"></i>
                 </button>
             </div>
         </form>
         <div class="d-flex justify-content-center align-items-center mb-3 mt-4">
             <h5 class="me-2">
-                <i class="fas fa-plus"></i>Leave Application/s
+                <i class="me-2 fa-solid fa-arrow-right-from-bracket"></i>Leave Application/s
             </h5>
         </div>
         <hr />

@@ -8,22 +8,21 @@
 
 @section('sidebar')
     <li class="nav-item">
-        {{-- <a class="nav-link" href="{{ route('manager.content_dashboard') }}">Dashboard</a> --}}
-        <a class="nav-link" href="/manager/content_dashboard">Dashboard</a>
+        <a class="nav-link" href="content_dashboard"><i class="fa-solid fa-gauge me-2"></i> Dashboard</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="/manager/employee">Employee</a>
+        <a class="nav-link" href="employee"><i class="me-2 fa-solid fa-user"></i> Employee</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="/manager/attendance">Attendance</a>
+        <a class="nav-link" href="attendance"><i class="me-2 fa-solid fa-clipboard-user"></i> Attendance</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="/manager/leave">Leave</a>
+        <a class="nav-link" href="leave"><i class="me-2 fa-solid fa-arrow-right-from-bracket"></i> Leave</a>
     </li>
     <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="departmentDropdown" role="button" data-bs-toggle="dropdown"
             aria-expanded="false">
-            Department
+            <i class="me-2 fa-solid fa-folder"></i> Department
         </a>
         <ul class="dropdown-menu" aria-labelledby="departmentDropdown">
             @if ($departments->isEmpty())
@@ -41,23 +40,23 @@
         </ul>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="/manager/department/create">New Department</a>
+        <a class="nav-link" href="/manager/department/create"><i class="me-2 fa-solid fa-plus"></i> New Department</a>
     </li>
     <li class="nav-item">
         <hr />
     </li>
     <li class="nav-item">
-        <a class="nav-link side-active" href="/manager/recruitment-dashboard">Recruitment</a>
+        <a class="nav-link side-active" href="recruitment-dashboard"><i class="me-2 fa-solid fa-database"></i> Recruitment</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="/manager/payroll">Payroll</a>
+        <a class="nav-link" href="payroll"><i class="me-2 fa-solid fa-dollar-sign"></i> Payroll</a>
     </li>
 @endsection
 
 @section('main-content')
     <div class="table-responsive text-center p-3">
         <div class="d-flex justify-content-center align-items-center mb-3">
-            <h4 class="mb-0">Submitted Application/s</h4>
+            <h4 class="mb-0"><i class="me-2 fa-solid fa-database"></i> Submitted Application/s</h4>
         </div>
         <table class="table table-bordered bg-white rounded align-middle">
             <thead class="table-light">
@@ -67,7 +66,7 @@
                     <th scope="col">Mobile Number</th>
                     <th scope="col">Email</th>
                     <th scope="col">Position</th>
-                    <th scope="col">Manage</th>
+                    <th scope="col">Delete</th>
                 </tr>
             </thead>
             <tbody>
@@ -84,7 +83,7 @@
                         <form action="recruitment-dashboard/{{ $recruitments->id }}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Delete</button>
+                            <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
                         </form>
                     </td>
                 </tr>

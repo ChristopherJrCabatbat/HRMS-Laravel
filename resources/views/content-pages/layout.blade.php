@@ -9,15 +9,18 @@
 
     <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/solid.css"
+    
+    {{-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/solid.css"
         integrity="sha384-Tv5i09RULyHKMwX0E8wJUqSOaXlyu3SQxORObAI08iUwIalMmN5L6AvlPX2LMoSE" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/fontawesome.css"
         integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-        integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOM4dNtbm20I6T9gk5z0WloIO3ipD2WS4hpqc5h0" crossorigin="anonymous">
+        integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOM4dNtbm20I6T9gk5z0WloIO3ipD2WS4hpqc5h0" crossorigin="anonymous"> --}}
 
     @yield('styles-links')
 
+    <script src="https://kit.fontawesome.com/f416851b63.js" crossorigin="anonymous"></script>
+    
 </head>
 
 <body class="body">

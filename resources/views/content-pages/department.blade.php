@@ -9,21 +9,21 @@
 @section('sidebar')
     <li class="nav-item">
         {{-- <a class="nav-link" href="{{ route('manager.content_dashboard') }}">Dashboard</a> --}}
-        <a class="nav-link" href="/manager/content_dashboard">Dashboard</a>
+        <a class="nav-link" href="/manager/content_dashboard"><i class="fa-solid fa-gauge me-2"></i> Dashboard</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="/manager/employee">Employee</a>
+        <a class="nav-link" href="/manager/employee"><i class="me-2 fa-solid fa-user"></i> Employee</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="/manager/attendance">Attendance</a>
+        <a class="nav-link" href="/manager/attendance"><i class="me-2 fa-solid fa-clipboard-user"></i> Attendance</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="/manager/leave">Leave</a>
+        <a class="nav-link" href="/manager/leave"><i class="me-2 fa-solid fa-arrow-right-from-bracket"></i> Leave</a>
     </li>
     <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle side-active" href="#" id="departmentDropdown" role="button"
             data-bs-toggle="dropdown" aria-expanded="false">
-            Department
+            <i class="me-2 fa-solid fa-folder"></i> Department
         </a>
         <ul class="dropdown-menu" aria-labelledby="departmentDropdown">
             @if ($departments->isEmpty())
@@ -43,17 +43,17 @@
     </li>
     <li class="nav-item">
         {{-- <a class="nav-link" href="/manager/department-new">New Department</a> --}}
-        <a class="nav-link" href="/manager/department/create">New Department</a>
+        <a class="nav-link" href="/manager/department/create"><i class="me-2 fa-solid fa-plus"></i> New Department</a>
         {{-- /manager/department/create --}}
     </li>
     <li class="nav-item">
         <hr />
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="/manager/recruitment-dashboard">Recruitment</a>
+        <a class="nav-link" href="/manager/recruitment-dashboard"><i class="me-2 fa-solid fa-database"></i> Recruitment</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="/manager/payroll">Payroll</a>
+        <a class="nav-link" href="/manager/payroll"><i class="me-2 fa-solid fa-dollar-sign"></i> Payroll</a>
     </li>
 @endsection
 
@@ -68,7 +68,7 @@
                 <h3 class="mb-0">{{ $departmentss->department_name }}</h3>
                 <form action="employee-add.html">
                     <button class="btn btn-primary rounded-pill px-4" type="submit">
-                        Update Info
+                        <i class="fas fa-pen-to-square"></i> Edit Info
                     </button>
                 </form>
             </div>
@@ -86,7 +86,7 @@
                     <div class="container text-center">
                         <div class="row row-cols-2">
                             <div class="col d-flex justify-content-center">
-                                <div class="card border-0" style="width: 8rem">
+                                <div class="card border-0" style="width: 9rem">
                                     <div
                                         class="card-body d-flex flex-column justify-content-center align-items-center text-center">
                                         <img src="{{ asset('images/employee.png') }}"
@@ -94,12 +94,12 @@
                                             style="width: 70px; height: 70px; margin-right: 0" />
                                         <h5 class="card-title">Kumar.S</h5>
                                         <p class="card-text">(123182973)</p>
-                                        <a href="#" class="btn btn-primary btn-sm">View profile</a>
+                                        <a href="#" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i> View profile</a>
                                     </div>
                                 </div>
                             </div>
                             <div class="col d-flex justify-content-center">
-                                <div class="card border-0" style="width: 8rem">
+                                <div class="card border-0" style="width: 9rem">
                                     <div
                                         class="card-body d-flex flex-column justify-content-center align-items-center text-center">
                                         <img src="{{ asset('images/employee.png') }}"
@@ -107,12 +107,12 @@
                                             style="width: 70px; height: 70px; margin-right: 0" />
                                         <h5 class="card-title">Kumar.S</h5>
                                         <p class="card-text">(123182973)</p>
-                                        <a href="#" class="btn btn-primary btn-sm">View profile</a>
+                                        <a href="#" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i> View profile</a>
                                     </div>
                                 </div>
                             </div>
                             <div class="col d-flex justify-content-center">
-                                <div class="card border-0" style="width: 8rem">
+                                <div class="card border-0" style="width: 9rem">
                                     <div
                                         class="card-body d-flex flex-column justify-content-center align-items-center text-center">
                                         <img src="{{ asset('images/employee.png') }}"
@@ -120,12 +120,12 @@
                                             style="width: 70px; height: 70px; margin-right: 0" />
                                         <h5 class="card-title">Kumar.S</h5>
                                         <p class="card-text">(123182973)</p>
-                                        <a href="#" class="btn btn-primary btn-sm">View profile</a>
+                                        <a href="#" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i> View profile</a>
                                     </div>
                                 </div>
                             </div>
                             <div class="col d-flex justify-content-center">
-                                <div class="card border-0" style="width: 8rem">
+                                <div class="card border-0" style="width: 9rem">
                                     <div
                                         class="card-body d-flex flex-column justify-content-center align-items-center text-center">
                                         <img src="{{ asset('images/employee.png') }}"
@@ -133,7 +133,7 @@
                                             style="width: 70px; height: 70px; margin-right: 0" />
                                         <h5 class="card-title">Kumar.S</h5>
                                         <p class="card-text">(123182973)</p>
-                                        <a href="#" class="btn btn-primary btn-sm">View profile</a>
+                                        <a href="#" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i> View profile</a>
                                     </div>
                                 </div>
                             </div>

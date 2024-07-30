@@ -8,22 +8,21 @@
 
 @section('sidebar')
     <li class="nav-item">
-        {{-- <a class="nav-link" href="{{ route('manager.content_dashboard') }}">Dashboard</a> --}}
-        <a class="nav-link" href="/manager/content_dashboard">Dashboard</a>
+        <a class="nav-link" href="content_dashboard"><i class="fa-solid fa-gauge me-2"></i> Dashboard</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link side-active" href="/manager/employee">Employee</a>
+        <a class="nav-link side-active" href="employee"><i class="me-2 fa-solid fa-user"></i> Employee</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="/manager/attendance">Attendance</a>
+        <a class="nav-link" href="attendance"><i class="me-2 fa-solid fa-clipboard-user"></i> Attendance</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="/manager/leave">Leave</a>
+        <a class="nav-link" href="leave"><i class="me-2 fa-solid fa-arrow-right-from-bracket"></i> Leave</a>
     </li>
     <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="departmentDropdown" role="button" data-bs-toggle="dropdown"
             aria-expanded="false">
-            Department
+            <i class="me-2 fa-solid fa-folder"></i> Department
         </a>
         <ul class="dropdown-menu" aria-labelledby="departmentDropdown">
             @if ($departments->isEmpty())
@@ -41,16 +40,16 @@
         </ul>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="/manager/department/create">New Department</a>
+        <a class="nav-link" href="/manager/department/create"><i class="me-2 fa-solid fa-plus"></i> New Department</a>
     </li>
     <li class="nav-item">
         <hr />
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="/manager/recruitment-dashboard">Recruitment</a>
+        <a class="nav-link" href="recruitment-dashboard"><i class="me-2 fa-solid fa-database"></i> Recruitment</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="/manager/payroll">Payroll</a>
+        <a class="nav-link" href="payroll"><i class="me-2 fa-solid fa-dollar-sign"></i> Payroll</a>
     </li>
 @endsection
 
@@ -58,9 +57,9 @@
     <!-- Employees table -->
     <div class="table-responsive text-center p-3">
         <div class="d-flex justify-content-between align-items-center mb-3">
-            <h5 class="mb-0">Employees</h5>
+            <h5 class="mb-0"><i class="fa-solid fa-users me-2"></i> Employees</h5>
             <form action="employee/create">
-                <button class="btn btn-primary" type="submit">
+                <button class="btn btn-primary" type="submit"><i class="fas fa-plus"></i>
                     Add Employee
                 </button>
             </form>
@@ -89,25 +88,25 @@
                         <td>{{ $employees->email }}</td>
                         <td class="position-relative">
                             <div class="dropdown">
-                                <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="manageDropdown1"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                <button class="btn btn-primary btn-sm dropdown-toggle manageDropdown1" type="button"
+                                    id="manageDropdown1" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-gear"></i>
                                     Manage
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="manageDropdown1">
                                     <li>
-                                        <a class="dropdown-item" href="employee/{{ $employees->id }}">View</a>
+                                        <a class="dropdown-item" href="employee/{{ $employees->id }}"><i class="fas fa-eye" style="color: green"></i> View</a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="employee/{{ $employees->id }}/edit">Edit</a>
+                                        <a class="dropdown-item" href="employee/{{ $employees->id }}/edit"><i class="fas fa-pen-to-square" style="color: blue"></i> Edit</a>
                                     </li>
-                                    
+
                                     <li>
                                         <form action="employee/{{ $employees->id }}" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="dropdown-item">Delete</button>
+                                            <button type="submit" class="dropdown-item"><i class="fa-solid fa-trash" style="color: red"></i> Delete</button>
                                         </form>
-                                        
+
                                     </li>
                                 </ul>
                             </div>
@@ -120,7 +119,7 @@
 @endsection
 
 @section('scripts')
-    <script>
+    {{-- <script>
         document.addEventListener("DOMContentLoaded", function() {
             var dropdownElement = document.getElementById("manageDropdown1");
 
@@ -131,6 +130,23 @@
                 dropdownMenu.style.top = rect.bottom - 30 + "px"; // Adjust the top position
                 dropdownMenu.style.left = rect.left - 87 + "px"; // Adjust the left position
                 dropdownMenu.style.width = "200px"; // Adjust as needed
+            });
+        });
+    </script> --}}
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var dropdownElements = document.querySelectorAll(".manageDropdown1");
+
+            dropdownElements.forEach(function(dropdown) {
+                dropdown.addEventListener("click", function(event) {
+                    var dropdownMenu = this.nextElementSibling;
+                    var rect = dropdown.getBoundingClientRect();
+                    dropdownMenu.style.position = "fixed";
+                    dropdownMenu.style.top = rect.bottom - 30 + "px"; // Adjust the top position
+                    dropdownMenu.style.left = rect.left - 87 + "px"; // Adjust the left position
+                    dropdownMenu.style.width = "200px"; // Adjust as needed
+                });
             });
         });
     </script>
