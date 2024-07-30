@@ -8,16 +8,16 @@
 
 @section('sidebar')
     <li class="nav-item">
-        <a class="nav-link" href="content_dashboard"><i class="fa-solid fa-gauge me-2"></i> Dashboard</a>
+        <a class="nav-link" href="/manager/content_dashboard"><i class="fa-solid fa-gauge me-2"></i> Dashboard</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link side-active" href="employee"><i class="me-2 fa-solid fa-user"></i> Employee</a>
+        <a class="nav-link side-active" href="/manager/employee"><i class="me-2 fa-solid fa-user"></i> Employee</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="attendance"><i class="me-2 fa-solid fa-clipboard-user"></i> Attendance</a>
+        <a class="nav-link" href="/manager/attendance"><i class="me-2 fa-solid fa-clipboard-user"></i> Attendance</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="leave"><i class="me-2 fa-solid fa-arrow-right-from-bracket"></i> Leave</a>
+        <a class="nav-link" href="/manager/leave"><i class="me-2 fa-solid fa-arrow-right-from-bracket"></i> Leave</a>
     </li>
     <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="departmentDropdown" role="button" data-bs-toggle="dropdown"
@@ -46,10 +46,10 @@
         <hr />
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="recruitment-dashboard"><i class="me-2 fa-solid fa-database"></i> Recruitment</a>
+        <a class="nav-link" href="/manager/recruitment-dashboard"><i class="me-2 fa-solid fa-database"></i> Recruitment</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="payroll"><i class="me-2 fa-solid fa-dollar-sign"></i> Payroll</a>
+        <a class="nav-link" href="/manager/payroll"><i class="me-2 fa-solid fa-dollar-sign"></i> Payroll</a>
     </li>
 @endsection
 

@@ -77,7 +77,7 @@
                 <!-- <input type="text" class="form-control" placeholder="Brief department history" id="lastName" /> -->
             </div>
             <div class="d-grid gap-2">
-                <button class="btn btn-primary" type="submit">Add Department<i class="ms-2 fa-solid fa-arrow-right-from-bracket"></i></button>
+                <button class="btn btn-primary" type="submit">Add Department</button>
             </div>
         </form>
     </div>

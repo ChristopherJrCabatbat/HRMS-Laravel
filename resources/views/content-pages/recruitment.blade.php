@@ -70,7 +70,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($recruitments as $recruitments)
+                @forelse ($recruitments as $recruitments)
                     
                 <tr>
                     <td>{{ $recruitments->first_name }}</td>
@@ -87,7 +87,11 @@
                         </form>
                     </td>
                 </tr>
-                @endforeach
+                @empty
+                <tr>
+                    <td colspan="6" class="text-center">There are no recruitment applications yet.</td>
+                </tr>
+                @endforelse
             </tbody>
         </table>
     </div>

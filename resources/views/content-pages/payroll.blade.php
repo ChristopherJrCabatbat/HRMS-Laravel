@@ -71,42 +71,79 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($employees as $employees)
-                <tr>
-                    <td>
-                        <img src="{{ $employees->photo ? asset($employees->photo) : asset('images/employee.png') }}"
-                        class="img-fluid rounded-circle" alt="Employee Image" style="width: 40px; height: 100%" />
-                    </td>
-                    <td>{{ $employees->first_name }}</td>
-                    <td>{{ $employees->last_name }}</td>
-                    <td>{{ $employees->account_number }}</td>
-                    <td>{{ $employees->bank }}</td>
-                    <td>₱{{ $employees->salary }}</td>
-                    <td class="position-relative">
-                        <button class="btn btn-primary">Pay</button>
-                    </td>
-                </tr>
-                @endforeach
+                @forelse ($employees as $employees)
+                    <tr>
+                        <td>
+                            <img src="{{ $employees->photo ? asset($employees->photo) : asset('images/employee.png') }}"
+                                class="img-fluid rounded-circle" alt="Employee Image" style="width: 40px; height: 100%" />
+                        </td>
+                        <td>{{ $employees->first_name }}</td>
+                        <td>{{ $employees->last_name }}</td>
+                        <td>{{ $employees->account_number }}</td>
+                        <td>{{ $employees->bank }}</td>
+                        <td>₱{{ $employees->salary }}</td>
+                        <td class="position-relative">
+                            <form action="{{ route('manager.pay', $employees->id) }}" method="POST" class="pay-form">
+                                @csrf
+                                <button class="btn btn-primary pay-button" type="submit"
+                                    data-id="{{ $employees->id }}">Pay</button>
+                            </form>
+                        </td>
+                    </tr>
+                @empty
+                    <tr>
+                        <td colspan="7" class="text-center">There are no payable employees.</td>
+                    </tr>
+                @endforelse
             </tbody>
         </table>
+        <div class="text-end">
+            <form action="{{ route('manager.make-all-unpaid') }}" method="POST">
+                @csrf
+                <button class="btn btn-danger" type="submit" onclick="return confirm('Are you sure you want to make all employees unpaid?')">Make all employees unpaid</button>
+            </form>
+        </div>
     </div>
+
 @endsection
 
 @section('scripts')
     {{-- <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            var dropdownElements = document.querySelectorAll(".dropdown-toggle");
+        document.addEventListener('DOMContentLoaded', function() {
+            const payButtons = document.querySelectorAll('.pay-button');
 
-            dropdownElements.forEach(function(dropdown) {
-                dropdown.addEventListener("click", function(event) {
-                    var dropdownMenu = this.nextElementSibling;
-                    var rect = dropdown.getBoundingClientRect();
-                    dropdownMenu.style.position = "fixed";
-                    dropdownMenu.style.top = rect.bottom - 30 + "px"; // Adjust the top position
-                    dropdownMenu.style.left = rect.left - 87 + "px"; // Adjust the left position
-                    dropdownMenu.style.width = "200px"; // Adjust as needed
+            payButtons.forEach(button => {
+                button.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    const employeeId = this.getAttribute('data-id');
+
+                    // Update the status to 'Paid' via an AJAX request
+                    axios.post(`/manager/pay/${employeeId}`)
+                        .then(response => {
+                            // Show a message or update the UI to reflect the 'Paid' status
+                            alert('Employee status updated to Paid.');
+
+                            // Reset the status to 'Unpaid' after 2 minutes for testing
+                            setTimeout(() => {
+                                axios.post(`/manager/reset-status/${employeeId}`)
+                                    .then(response => {
+                                        alert('Employee status reset to Unpaid.');
+                                        location
+                                    .reload(); // Reload the page to reflect changes
+                                    })
+                                    .catch(error => {
+                                        console.error(
+                                            'Error resetting employee status:',
+                                            error);
+                                    });
+                            }, 1 * 60 * 1000); // 2 minutes in milliseconds for testing
+                        })
+                        .catch(error => {
+                            console.error('Error updating employee status:', error);
+                        });
                 });
             });
         });
     </script> --}}
+
 @endsection

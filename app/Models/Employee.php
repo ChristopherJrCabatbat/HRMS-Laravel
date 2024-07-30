@@ -20,6 +20,8 @@ class Employee extends Model
         'gender',
         'department',
         'photo',
+        'status',
+        'paid_at',
     ];
 
 }

@@ -67,6 +67,6 @@ class RecruitmentController extends Controller
     {
         $recruitments = Recruitment::findOrFail($id);
         $recruitments->delete();
-        return redirect('/manager/recruitment-dashboard')->with("message", "Recruitment application deleted successfully!");
+        return redirect('/manager/recruitment-dashboard')->with("success", "Recruitment application deleted successfully!");
     }
 }

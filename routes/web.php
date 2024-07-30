@@ -69,6 +69,9 @@ Route::group([
 
     // Payroll
     Route::get('/payroll', [ManagerController::class, 'payroll'])->name('payroll');
+    Route::post('/pay/{id}', [ManagerController::class, 'pay'])->name('pay');
+    Route::post('/reset-status/{id}', [ManagerController::class, 'resetStatus'])->name('reset-status');
+    Route::post('/make-all-unpaid', [ManagerController::class, 'makeAllUnpaid'])->name('make-all-unpaid');
 });
 
 

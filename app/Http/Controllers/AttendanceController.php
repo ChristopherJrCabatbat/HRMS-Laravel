@@ -84,7 +84,7 @@ class AttendanceController extends Controller
 
         $attendance->save();
 
-        return redirect('/manager/attendance')->with("message", "Employee signed-in successfully!");
+        return redirect('/manager/attendance')->with("success", "Employee signed-in successfully!");
     }
 
 
@@ -127,7 +127,7 @@ class AttendanceController extends Controller
 
         $attendance->save();
 
-        return redirect('/manager/attendance')->with('message', 'Employee signed-out successfully!');
+        return redirect('/manager/attendance')->with('success', 'Employee signed-out successfully!');
     }
 
     /**

@@ -42,7 +42,7 @@ class DepartmentController extends Controller
         $departments->department_name = $request->input('department_name');
         $departments->history = $request->input('history');
         $departments->save();
-        return redirect('/manager/department/' . $departments->id)->with("message", "Department added successfully!");
+        return redirect('/manager/department/' . $departments->id)->with("success", "Department added successfully!");
     }
 
     /**

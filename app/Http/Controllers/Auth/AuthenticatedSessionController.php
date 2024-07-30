@@ -34,7 +34,7 @@ class AuthenticatedSessionController extends Controller
         // }
 
         // return redirect()->intended(route('/manager/content_dashboard'));
-        return redirect('/manager/content_dashboard')->with('message', 'You have successfully logged in!');
+        return redirect('/manager/content_dashboard')->with('success', 'You have successfully logged in!');
         // return redirect()->intended(route('admin'));
     }
 

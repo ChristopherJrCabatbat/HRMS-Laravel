@@ -132,7 +132,8 @@
                             <form action="{{ route('manager.attendance.update', $attendance->id) }}" method="POST">
                                 @csrf
                                 @method('PUT')
-                                <button class="btn btn-primary btn-sm" type="submit">Sign-out <i class="fa-solid fa-arrow-right-from-bracket ms-1"></i></button>
+                                <button class="btn btn-primary btn-sm sign-out-button" type="submit">Sign-out <i
+                                        class="fa-solid fa-arrow-right-from-bracket rotate"></i></button>
                             </form>
                         </td>
                     </tr>
@@ -143,23 +144,19 @@
                 @endforelse
             </tbody>
         </table>
-        
+
     </div>
 @endsection
 
 @section('scripts')
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            var dropdownElements = document.querySelectorAll(".dropdown-toggles");
+        document.addEventListener('DOMContentLoaded', function() {
+            const buttons = document.querySelectorAll('.sign-out-button');
 
-            dropdownElements.forEach(function(dropdown) {
-                dropdown.addEventListener("click", function(event) {
-                    var dropdownMenu = this.nextElementSibling;
-                    var rect = dropdown.getBoundingClientRect();
-                    dropdownMenu.style.position = "fixed";
-                    dropdownMenu.style.top = rect.bottom - 30 + "px"; // Adjust the top position
-                    dropdownMenu.style.left = rect.left - 87 + "px"; // Adjust the left position
-                    dropdownMenu.style.width = "200px"; // Adjust as needed
+            buttons.forEach(button => {
+                button.addEventListener('click', function() {
+                    this.disabled = true; // Disable the button
+                    this.innerHTML = 'Employee Signed-out'; // Optional: Change button text
                 });
             });
         });

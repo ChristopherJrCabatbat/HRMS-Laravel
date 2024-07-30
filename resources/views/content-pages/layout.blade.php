@@ -9,7 +9,7 @@
 
     <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
-    
+
     {{-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/solid.css"
         integrity="sha384-Tv5i09RULyHKMwX0E8wJUqSOaXlyu3SQxORObAI08iUwIalMmN5L6AvlPX2LMoSE" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/fontawesome.css"
@@ -19,11 +19,28 @@
 
     @yield('styles-links')
 
+    <style>
+        .rotate {
+            transform: rotate(180deg);
+        }
+    </style>
+
     <script src="https://kit.fontawesome.com/f416851b63.js" crossorigin="anonymous"></script>
-    
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+
 </head>
 
 <body class="body">
+    @if (session('success'))
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                alert('{{ session('success') }}');
+            });
+        </script>
+    @endif
+
     <header>
         <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
@@ -43,14 +60,17 @@
                                         alt="User Image" class="rounded-circle" style="width: 30px; height: 30px;">
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="{{ route('profile.edit') }}">Profile</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('profile.edit') }}"><i
+                                                class="me-2 fa-solid fa-user"></i> Profile</a></li>
                                     <li>
                                         <hr class="dropdown-divider">
                                     </li>
                                     <li>
                                         <form method="POST" action="{{ route('logout') }}">
                                             @csrf
-                                            <button type="submit" class="dropdown-item">{{ __('Log Out') }}</button>
+                                            <button type="submit" class="dropdown-item"><i
+                                                    class="me-2 fa-solid fa-arrow-right-from-bracket rotate"></i>
+                                                {{ __('Log Out') }}</button>
                                         </form>
                                     </li>
                                 </ul>

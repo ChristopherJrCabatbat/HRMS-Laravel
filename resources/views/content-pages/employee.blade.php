@@ -76,7 +76,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($employees as $employees)
+                @forelse ($employees as $employees)
                     <tr>
                         <td>
                             <img src="{{ $employees->photo ? asset($employees->photo) : asset('images/employee.png') }}"
@@ -112,7 +112,11 @@
                             </div>
                         </td>
                     </tr>
-                @endforeach
+                    @empty
+                    <tr>
+                        <td colspan="6" class="text-center">There are no employees.</td>
+                    </tr>
+                @endforelse
             </tbody>
         </table>
     </div>

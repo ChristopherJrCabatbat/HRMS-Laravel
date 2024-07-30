@@ -9,20 +9,24 @@ use App\Models\Employee;
 use App\Models\Recruitment;
 use App\Models\User;
 
+use Carbon\Carbon;
+
 class ManagerController extends Controller
 {
-    public function content_dashboard() {
+    public function content_dashboard()
+    {
 
         $managersCount = User::count();
         $departmentsCount = Department::count();
-        $employeesCount = Employee::count();    
+        $employeesCount = Employee::count();
 
         $departments = Department::all();
         $employees = Employee::all();
-        return view('content-pages.dashboard', compact('departments', 'employees', 'managersCount','departmentsCount','employeesCount'));
+        return view('content-pages.dashboard', compact('departments', 'employees', 'managersCount', 'departmentsCount', 'employeesCount'));
     }
-    
-    public function recruitmentDashboard() {
+
+    public function recruitmentDashboard()
+    {
         $departments = Department::all();
         return view('content-pages.recruitment', compact('departments'));
     }
@@ -42,12 +46,47 @@ class ManagerController extends Controller
         $recruitments->mobile_number = $request->input('mobile_number');
 
         $recruitments->save();
-        return redirect('/recruitment')->with("message", "Application successfully sent!");
+        return redirect('/recruitment')->with("success", "Application successfully sent!");
     }
 
-    public function payroll() {
+    public function payroll()
+    {
         $departments = Department::all();
-        $employees = Employee::all();
+        $employees = Employee::where('status', 'Unpaid')->get();
         return view('content-pages.payroll', compact('departments', 'employees'));
+    }
+
+    public function pay($id)
+    {
+        $employee = Employee::find($id);
+
+        if ($employee) {
+            $employee->status = 'Paid';
+            $employee->paid_at = Carbon::now(); // Set the paid_at timestamp
+            $employee->save();
+        }
+
+        return redirect()->back()->with('success', 'Employee status updated to Paid.');
+        // return response()->json(['success' => 'Employee status updated to Paid.']);
+    }
+
+    public function resetStatus($id)
+    {
+        $employee = Employee::find($id);
+
+        if ($employee) {
+            $employee->status = 'Unpaid';
+            $employee->save();
+        }
+
+        return response()->json(['success' => 'Employee status reset to Unpaid.']);
+    }
+
+    public function makeAllUnpaid()
+    {
+        // Update the status of all employees to 'Unpaid'
+        Employee::query()->update(['status' => 'Unpaid']);
+
+        return redirect()->back()->with('success', 'All employees have been set to Unpaid.');
     }
 }

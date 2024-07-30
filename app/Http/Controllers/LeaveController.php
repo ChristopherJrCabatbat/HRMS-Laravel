@@ -47,7 +47,7 @@ class LeaveController extends Controller
         $leaves->name = $request->input('name');
 
         $leaves->save();
-        return redirect('/manager/leave')->with("message", "Leave managed successfully!");
+        return redirect('/manager/leave')->with("success", "Leave managed successfully!");
     }
 
     /**

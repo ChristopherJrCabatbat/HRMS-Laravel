@@ -57,7 +57,7 @@ class EmployeeController extends Controller
         }
 
         $employees->save();
-        return redirect('/manager/employee')->with("message", "Employee added successfully!");
+        return redirect('/manager/employee')->with("success", "Employee added successfully!");
     }
 
     /**
@@ -130,7 +130,7 @@ class EmployeeController extends Controller
         }
 
         $employees->save();
-        return redirect('/manager/employee')->with("message", "Employee updated successfully!");
+        return redirect('/manager/employee')->with("success", "Employee updated successfully!");
     }
 
     /**
@@ -140,6 +140,6 @@ class EmployeeController extends Controller
     {
         $employees = Employee::findOrFail($id);
         $employees->delete();
-        return redirect('/manager/employee')->with("message", "Employee deleted successfully!");
+        return redirect('/manager/employee')->with("success", "Employee deleted successfully!");
     }
 }

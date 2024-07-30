@@ -24,6 +24,8 @@ return new class extends Migration
             $table->string('gender');
             $table->string('department');
             $table->string('photo')->nullable();
+            $table->string('status')->default('Unpaid');
+            $table->timestamp('paid_at')->nullable();
             $table->timestamps();
         });
     }

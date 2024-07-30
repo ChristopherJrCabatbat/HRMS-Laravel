@@ -108,7 +108,7 @@
             </table>
             <div class="text-center">
                 <button class="btn btn-outline-primary rounded-pill px-4">
-                    Submit<i class="ms-2 fa-solid fa-arrow-right-from-bracket"></i>
+                    Submit <i class="fa-solid fa-right-to-bracket"></i>
                 </button>
             </div>
         </form>

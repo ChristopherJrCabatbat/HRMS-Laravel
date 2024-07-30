@@ -936,7 +936,7 @@
             "description": "PSR-7 message implementation that also provides common utility methods",
             "keywords": [
                 "http",
-                "message",
+                "success",
                 "psr-7",
                 "request",
                 "response",
@@ -2638,7 +2638,7 @@
             "keywords": [
                 "factory",
                 "http",
-                "message",
+                "success",
                 "psr",
                 "psr-17",
                 "psr-7",
