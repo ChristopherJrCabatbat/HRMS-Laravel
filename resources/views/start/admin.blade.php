@@ -31,25 +31,22 @@
 
                 {{-- Email --}}
                 <div class="mb-3 form-floating">
-                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email" 
-                    {{-- :value="old('email')"  --}}
-                    autofocus required autocomplete="username"
-                        placeholder="" />
+                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email"
+                        autofocus required autocomplete="username" placeholder="" />
                     <label for="exampleInputEmail1" class="form-label">Email:</label>
                     <div id="emailHelp" class="form-text">
                         We'll never share your email with anyone else.
                     </div>
                 </div>
-                {{-- <div>
-                    <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-                    <x-input-error :messages="$errors->get('email')" class="mt-2" />
-                </div> --}}
 
+                @if ($errors->has('email'))
+                    <div class="mb-3 form-control alert alert-danger p-2"><i class="fa-solid fa-triangle-exclamation me-1"></i> {{ $errors->first('email') }}</div>
+                @endif
 
                 {{-- Password --}}
                 <div class="mb-3 form-floating">
-                    <input type="password" id="password" name="password" class="form-control" aria-describedby="passwordHelpBlock" required autocomplete="current-password"
-                        placeholder="" />
+                    <input type="password" id="password" name="password" class="form-control"
+                        aria-describedby="passwordHelpBlock" required autocomplete="current-password" placeholder="" />
                     <label for="inputPassword5" class="form-label">Password:</label>
                     <div id="passwordHelpBlock" class="form-text">
                         Your password must be 8-20 characters long, contain letters and
@@ -57,14 +54,9 @@
                         emoji.
                     </div>
                 </div>
-                {{-- <div class="mt-4">
-                    <x-text-input id="password" class="block mt-1 w-full"
-                                    type="password"
-                                    name="password"
-                                    required autocomplete="current-password" />
-        
-                    <x-input-error :messages="$errors->get('password')" class="mt-2" />
-                </div> --}}
+                @if ($errors->has('password'))
+                    <div class="mb-3 form-control alert alert-danger p-2"><i class="fa-solid fa-triangle-exclamation me-1"></i> {{ $errors->first('password') }}</div>
+                @endif
 
                 <div class="d-grid my-3">
                     <button class="btn btn-primary" type="submit">Log in</button>

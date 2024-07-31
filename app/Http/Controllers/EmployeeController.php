@@ -107,8 +107,8 @@ class EmployeeController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            // 'first_name' => 'required|string|max:255',
-            // 'photo' => 'nullable|file|image|max:10240', 
+            'first_name' => 'required|string|max:255',
+            'photo' => 'nullable|file|image|max:10240', 
         ]);
 
         $employees = Employee::find($id);

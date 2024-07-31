@@ -144,7 +144,7 @@
             </tbody>
         </table>
         <div class="text-end">
-            <a href="/manager/indexAll" class="btn btn-primary">Show all leave applications.</a>
+            <a href="/manager/indexAll" class="btn btn-primary">Show all leave applications</a>
         </div>
     </div>
 @endsection

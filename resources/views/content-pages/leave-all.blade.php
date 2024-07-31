@@ -144,7 +144,7 @@
             </tbody>
         </table>
         <div class="text-end">
-            <a href="/manager/leave" class="btn btn-primary">Show only the recent leave applications.</a>
+            <a href="/manager/leave" class="btn btn-primary">Show only the recent leave applications</a>
 
         </div>
     </div>

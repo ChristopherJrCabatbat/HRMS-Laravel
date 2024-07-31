@@ -40,11 +40,11 @@
             });
         </script>
     @endif
-    @if (session('error'))
+    {{-- @if (session('error'))
         <div class="alert alert-danger">
             {{ session('error') }}
         </div>
-    @endif
+    @endif --}}
 
     <header>
         <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
