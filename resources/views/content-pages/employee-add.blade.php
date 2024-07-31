@@ -62,20 +62,20 @@
         <form method="POST" action="/manager/employee" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
-                <label for="firstName" class="form-label">First name:</label>
+                <label for="firstName" class="form-label">First Name:</label>
                 <input type="text" class="form-control" id="first_name" name="first_name" placeholder="e.g. John" autofocus/>
             </div>
             <div class="mb-3">
-                <label for="lastName" class="form-label">Last name:</label>
+                <label for="lastName" class="form-label">Last Name:</label>
                 <input type="text" class="form-control" id="lastName" name="last_name" placeholder="e.g. Doe" />
             </div>
             <div class="mb-3">
-                <label for="mobileNumber" class="form-label">Mobile number:</label>
+                <label for="mobileNumber" class="form-label">Mobile Number:</label>
                 <input type="text" class="form-control" id="mobileNumber" name="mobile_number"
                     placeholder="e.g. 09876543210" />
             </div>
             <div class="mb-3">
-                <label for="emergency_mobile_number" class="form-label">Emergency Contact Mobile number:</label>
+                <label for="emergency_mobile_number" class="form-label">Emergency Contact Mobile Number:</label>
                 <input type="text" class="form-control" id="emergency_mobile_number" name="emergency_mobile_number"
                     placeholder="e.g. 09876543210" />
             </div>
@@ -88,7 +88,7 @@
                 <input type="text" class="form-control" id="account_number" name="account_number" placeholder="e.g. 09876543210" />
             </div>
             <div class="mb-3">
-                <label for="emailAddress" class="form-label">Email address:</label>
+                <label for="emailAddress" class="form-label">Email Address:</label>
                 <input type="email" class="form-control" id="emailAddress" name="email"
                     placeholder="e.g. my@email.com" />
                 <div id="emailHelp" class="form-text">

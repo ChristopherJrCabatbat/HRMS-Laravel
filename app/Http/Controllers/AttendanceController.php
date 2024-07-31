@@ -122,13 +122,15 @@ class AttendanceController extends Controller
         // Get the current time in MySQL format
         $currentTime = Carbon::now()->toTimeString(); // MySQL format: HH:MM:SS
 
-        // Update the departure field
+        // Update the departure field and set is_signed_out to true
         $attendance->departure = $currentTime;
+        $attendance->is_signed_out = true; // Set the sign-out status to true
 
         $attendance->save();
 
         return redirect('/manager/attendance')->with('success', 'Employee signed-out successfully!');
     }
+
 
     /**
      * Remove the specified resource from storage.

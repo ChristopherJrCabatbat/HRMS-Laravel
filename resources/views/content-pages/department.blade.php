@@ -33,9 +33,9 @@
             @else
                 @foreach ($departments as $department)
                     <li>
-                        <a class="dropdown-item" 
-                        href="{{ url('/manager/department/' . $department->id) }}">{{ $department->department_name }}</a>
-                            {{-- href="{{ url('/manager/department/' . $department->id) }}">{{ $department->department_name }}</a> --}}
+                        <a class="dropdown-item"
+                            href="{{ url('/manager/department/' . $department->id) }}">{{ $department->department_name }}</a>
+                        {{-- href="{{ url('/manager/department/' . $department->id) }}">{{ $department->department_name }}</a> --}}
                     </li>
                 @endforeach
             @endif
@@ -85,82 +85,35 @@
                     <hr />
                     <div class="container text-center">
                         <div class="row row-cols-2">
-                            <div class="col d-flex justify-content-center">
-                                <div class="card border-0" style="width: 9rem">
-                                    <div
-                                        class="card-body d-flex flex-column justify-content-center align-items-center text-center">
-                                        <img src="{{ asset('images/employee.png') }}"
-                                            class="img-fluid rounded-circle text-center" alt="Employee Image"
-                                            style="width: 70px; height: 70px; margin-right: 0" />
-                                        <h5 class="card-title">Kumar.S</h5>
-                                        <p class="card-text">(123182973)</p>
-                                        <a href="#" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i> View profile</a>
+                            @forelse ($employees as $employee)
+                                <div class="col d-flex justify-content-center">
+                                    <div class="card border-0" style="width: 9rem">
+                                        <div
+                                            class="card-body d-flex flex-column justify-content-center align-items-center text-center">
+                                            <img src="{{ $employee->photo ? asset($employee->photo) : asset('images/employee.png') }}"
+                                                class="img-fluid rounded-circle text-center border-primary border border-primary" alt="Employee Image"
+                                                style="width: 70px; height: 70px; margin-right: 0; object-fit: cover" />
+                                            <h5 class="card-title">{{ $employee->first_name }} {{ $employee->last_name }}
+                                            </h5>
+                                            <p class="card-text">({{ $employee->id }})</p>
+                                            <a href="/manager/employee/{{ $employee->id }}" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i> View
+                                                profile</a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col d-flex justify-content-center">
-                                <div class="card border-0" style="width: 9rem">
-                                    <div
-                                        class="card-body d-flex flex-column justify-content-center align-items-center text-center">
-                                        <img src="{{ asset('images/employee.png') }}"
-                                            class="img-fluid rounded-circle text-center" alt="Employee Image"
-                                            style="width: 70px; height: 70px; margin-right: 0" />
-                                        <h5 class="card-title">Kumar.S</h5>
-                                        <p class="card-text">(123182973)</p>
-                                        <a href="#" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i> View profile</a>
-                                    </div>
+                            @empty
+                                <div class="text-center w-100">
+                                    <p>No employees associated with this department.</p>
                                 </div>
-                            </div>
-                            <div class="col d-flex justify-content-center">
-                                <div class="card border-0" style="width: 9rem">
-                                    <div
-                                        class="card-body d-flex flex-column justify-content-center align-items-center text-center">
-                                        <img src="{{ asset('images/employee.png') }}"
-                                            class="img-fluid rounded-circle text-center" alt="Employee Image"
-                                            style="width: 70px; height: 70px; margin-right: 0" />
-                                        <h5 class="card-title">Kumar.S</h5>
-                                        <p class="card-text">(123182973)</p>
-                                        <a href="#" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i> View profile</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col d-flex justify-content-center">
-                                <div class="card border-0" style="width: 9rem">
-                                    <div
-                                        class="card-body d-flex flex-column justify-content-center align-items-center text-center">
-                                        <img src="{{ asset('images/employee.png') }}"
-                                            class="img-fluid rounded-circle text-center" alt="Employee Image"
-                                            style="width: 70px; height: 70px; margin-right: 0" />
-                                        <h5 class="card-title">Kumar.S</h5>
-                                        <p class="card-text">(123182973)</p>
-                                        <a href="#" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i> View profile</a>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforelse
                         </div>
                     </div>
                 </div>
-
             </div>
         @endif
     </div>
+
 @endsection
 
 @section('scripts')
-    {{-- <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            var dropdownElements = document.querySelectorAll(".dropdown-toggle");
-
-            dropdownElements.forEach(function(dropdown) {
-                dropdown.addEventListener("click", function(event) {
-                    var dropdownMenu = this.nextElementSibling;
-                    var rect = dropdown.getBoundingClientRect();
-                    dropdownMenu.style.position = "fixed";
-                    dropdownMenu.style.top = rect.bottom - 30 + "px"; // Adjust the top position
-                    dropdownMenu.style.left = rect.left - 87 + "px"; // Adjust the left position
-                    dropdownMenu.style.width = "200px"; // Adjust as needed
-                });
-            });
-        });
-    </script> --}}
 @endsection

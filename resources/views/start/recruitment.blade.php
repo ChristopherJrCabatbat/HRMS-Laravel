@@ -43,7 +43,7 @@
             name="first_name"
           />
           <label for="exampleInputEmail1" class="form-label"
-            >First name:</label
+            >First Name:</label
           >
         </div>
         <div class="mb-3  form-floating">
@@ -56,7 +56,7 @@
             name="last_name"
           />
           <label for="exampleInputEmail1" class="form-label"
-            >Last name:</label
+            >Last Name:</label
           >
         </div>
         <div class="mb-3  form-floating">

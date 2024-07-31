@@ -1,6 +1,6 @@
 @extends('content-pages.layout')
 
-@section('title', 'Attendance')
+@section('title', 'Leave')
 
 @section('styles-links')
 
@@ -14,10 +14,10 @@
         <a class="nav-link" href="employee"><i class="me-2 fa-solid fa-user"></i> Employee</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link side-active" href="attendance"><i class="me-2 fa-solid fa-clipboard-user"></i> Attendance</a>
+        <a class="nav-link" href="attendance"><i class="me-2 fa-solid fa-clipboard-user"></i> Attendance</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="leave"><i class="me-2 fa-solid fa-arrow-right-from-bracket"></i> Leave</a>
+        <a class="nav-link side-active" href="leave"><i class="me-2 fa-solid fa-arrow-right-from-bracket"></i> Leave</a>
     </li>
     <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="departmentDropdown" role="button" data-bs-toggle="dropdown"
@@ -56,26 +56,42 @@
 @section('main-content')
     <div class="recruitment-form container border p-4 table-responsive">
         <div class="d-flex justify-content-center align-items-center mb-3">
-            <h3 class="me-2"><i class="me-2 fa-solid fa-clipboard-user"></i> Employee Attendance</h3>
+            <h3 class="me-2">
+                <i class="me-2 fa-solid fa-arrow-right-from-bracket"></i> Employee Leave Management
+            </h3>
         </div>
         <hr />
-
-        <form id="attendanceForm" method="POST" action="/manager/attendance">
+        <form method="POST" action="/manager/leave" id="leaveForm">
             @csrf
             <table class="table text-center align-middle">
                 <thead class="table-light">
                     <tr>
-                        <th>Date</th>
-                        <th>Employees</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
                         <th>Status</th>
+                        <th>Employee</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="align-middle">{{ \Carbon\Carbon::now()->format('F j, Y') }}</td>
                         <td>
-                            <select class="form-select" id="name" name="name" required>
-                                <option value="" selected disabled>Select Employee</option>
+                            <input required type="date" name="start_date" class="form-control" id="start_date"
+                                aria-describedby="emailHelp" />
+                        </td>
+                        <td>
+                            <input required type="date" class="form-control" name="end_date" id="end_date"
+                                aria-describedby="emailHelp" />
+                        </td>
+                        <td>
+                            <select required class="form-select" id="status" name="status" required>
+                                <option selected disabled>Select Status</option>
+                                <option value="Approved">Approved</option>
+                                <option value="Disapproved">Disapproved</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select required class="form-select" id="name" name="name" required>
+                                <option selected disabled>Select Employee</option>
                                 @if ($employees->isEmpty())
                                     <option value="No employee available." disabled>No employee available.</option>
                                 @else
@@ -87,99 +103,70 @@
                                 @endif
                             </select>
                         </td>
-                        <td>
-                            <select class="form-select" id="status" name="status" required>
-                                <option value="" selected disabled>Select Status</option>
-                                <option value="Present">Present</option>
-                                <option value="Absent">Absent</option>
-                                <option value="Unavailable">Unavailable</option>
-                            </select>
-                        </td>
                     </tr>
                 </tbody>
             </table>
             <div class="text-center">
-                <button class="btn btn-outline-primary rounded-pill px-4" id="signIn" type="submit">
-                    Sign in <i class="fa-solid fa-right-to-bracket"></i>
+                <button class="btn btn-outline-primary rounded-pill px-4" id="submitLeave" type="submit">
+                    Submit <i class="fa-solid fa-right-to-bracket"></i>
                 </button>
             </div>
         </form>
-        
+
         <div class="d-flex justify-content-center align-items-center mb-3 mt-4">
-            <h5 class="me-2"><i class="me-2 fa-solid fa-clipboard-user"></i> Signed in Employee/s</h5>
+            <h5 class="me-2">
+                <i class="me-2 fa-solid fa-arrow-right-from-bracket"></i>Leave Application/s
+            </h5>
         </div>
         <hr />
-        <p>Only present employees are displayed here.</p>
         <table class="table table-bordered bg-white rounded text-center align-middle">
             <thead class="table-light">
                 <tr>
-                    <th scope="col">Date</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Arrival Time</th>
-                    <th scope="col">Departure Time</th>
-                    <th scope="col">Action</th>
+                    <th scope="col">Start Date</th>
+                    <th scope="col">End Date</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Employee</th>
                 </tr>
             </thead>
             <tbody>
-                @forelse ($attendances as $attendance)
+                @forelse ($leaves as $leaves)
                     <tr>
-                        <td>{{ $attendance->formatted_date }}</td>
-                        <td>{{ $attendance->name }}</td>
-                        <td class="fw-bold">{{ $attendance->formatted_arrival }}</td>
-                        <td class="fw-bold">{{ $attendance->formatted_departure }}</td>
-                        <td>
-                            <form action="{{ route('manager.attendance.update', $attendance->id) }}" method="POST">
-                                @csrf
-                                @method('PUT')
-                                <button class="btn btn-primary btn-sm sign-out-button"
-                                    type="submit"
-                                    {{ $attendance->is_signed_out ? 'disabled' : '' }}>
-                                    Sign-out <i class="fa-solid fa-arrow-right-from-bracket rotate"></i>
-                                </button>
-                            </form>
-                        </td>
+                        <td>{{ \Carbon\Carbon::parse($leaves->start_date)->format('F j, Y') }}</td>
+                        <td>{{ \Carbon\Carbon::parse($leaves->end_date)->format('F j, Y') }}</td>
+                        <td>{{ $leaves->status }}</td>
+                        <td>{{ $leaves->name }}</td>
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="5" class="text-center">There is no signed-in employee today.</td>
+                        <td colspan="4" class="text-center">There is currently no leave application to be managed.</td>
                     </tr>
                 @endforelse
             </tbody>
-            
         </table>
+        <div class="text-end">
+            <a href="/manager/leave" class="btn btn-primary">Show only the recent leave applications.</a>
 
+        </div>
     </div>
 @endsection
 
 @section('scripts')
-    {{-- Sign out --}}
-    {{-- <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const buttons = document.querySelectorAll('.sign-out-button');
-
-            buttons.forEach(button => {
-                button.addEventListener('click', function() {
-                    this.innerHTML = 'Employee Signed-out'; // Optional: Change button text
-                });
-            });
-        });
-    </script> --}}
-
-    {{-- Sign in required --}}
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const signInButton = document.getElementById('signIn');
-            const employeeSelect = document.getElementById('name');
+            const submitButton = document.getElementById('submitLeave');
+            const startDate = document.getElementById('start_date');
+            const endDate = document.getElementById('end_date');
             const statusSelect = document.getElementById('status');
-            const form = document.getElementById('attendanceForm');
+            const nameSelect = document.getElementById('name');
+            const form = document.getElementById('leaveForm');
 
             form.addEventListener('submit', function(event) {
-                if (employeeSelect.value === '' || statusSelect.value === '') {
+                if (!startDate.value || !endDate.value || !statusSelect.value || !nameSelect.value) {
                     event.preventDefault();
-                    alert('Please select employee and status to sign in.');
+                    alert('Please fill in all fields before submitting.');
                 }
             });
         });
     </script>
-@endsection
 
+@endsection

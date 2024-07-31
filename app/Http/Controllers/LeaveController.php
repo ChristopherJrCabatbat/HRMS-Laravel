@@ -14,9 +14,19 @@ class LeaveController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function indexAll()
     {
         $leaves = Leave::all();
+        $departments = Department::all();
+        $employees = Employee::all();
+        
+        return view('content-pages.leave-all', compact('departments', 'employees', 'leaves'));
+    }
+
+    public function index()
+    {
+        $today = \Carbon\Carbon::now()->toDateString(); // Get today's date
+        $leaves = Leave::where('end_date', '>=', $today)->get(); // Fetch leaves with end_date >= today
         $departments = Department::all();
         $employees = Employee::all();
         

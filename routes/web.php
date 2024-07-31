@@ -59,6 +59,7 @@ Route::group([
 
     // Leave
     Route::resource('leave', LeaveController::class);
+    Route::get('/indexAll', [LeaveController::class, 'indexAll'])->name('indexAll');
 
     // Department
     Route::resource('department', DepartmentController::class);

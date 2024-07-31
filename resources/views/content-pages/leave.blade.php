@@ -61,7 +61,7 @@
             </h3>
         </div>
         <hr />
-        <form method="POST" action="/manager/leave">
+        <form method="POST" action="/manager/leave" id="leaveForm">
             @csrf
             <table class="table text-center align-middle">
                 <thead class="table-light">
@@ -75,22 +75,22 @@
                 <tbody>
                     <tr>
                         <td>
-                            <input type="date" name="start_date" class="form-control" id="start_date"
+                            <input required type="date" name="start_date" class="form-control" id="start_date"
                                 aria-describedby="emailHelp" />
                         </td>
                         <td>
-                            <input type="date" class="form-control" name="end_date" id="end_date"
+                            <input required type="date" class="form-control" name="end_date" id="end_date"
                                 aria-describedby="emailHelp" />
                         </td>
                         <td>
-                            <select class="form-select" id="status" name="status" required>
+                            <select required class="form-select" id="status" name="status" required>
                                 <option selected disabled>Select Status</option>
                                 <option value="Approved">Approved</option>
                                 <option value="Disapproved">Disapproved</option>
                             </select>
                         </td>
                         <td>
-                            <select class="form-select" id="name" name="name" required>
+                            <select required class="form-select" id="name" name="name" required>
                                 <option selected disabled>Select Employee</option>
                                 @if ($employees->isEmpty())
                                     <option value="No employee available." disabled>No employee available.</option>
@@ -107,11 +107,12 @@
                 </tbody>
             </table>
             <div class="text-center">
-                <button class="btn btn-outline-primary rounded-pill px-4">
+                <button class="btn btn-outline-primary rounded-pill px-4" id="submitLeave" type="submit">
                     Submit <i class="fa-solid fa-right-to-bracket"></i>
                 </button>
             </div>
         </form>
+
         <div class="d-flex justify-content-center align-items-center mb-3 mt-4">
             <h5 class="me-2">
                 <i class="me-2 fa-solid fa-arrow-right-from-bracket"></i>Leave Application/s
@@ -137,29 +138,34 @@
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="4" class="text-center">There is currently no leave to be managed.</td>
+                        <td colspan="4" class="text-center">There is currently no new leave application to be managed.</td>
                     </tr>
                 @endforelse
             </tbody>
         </table>
+        <div class="text-end">
+            <a href="/manager/indexAll" class="btn btn-primary">Show all leave applications.</a>
+        </div>
     </div>
 @endsection
 
 @section('scripts')
-    {{-- <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            var dropdownElements = document.querySelectorAll(".dropdown-toggle");
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const submitButton = document.getElementById('submitLeave');
+            const startDate = document.getElementById('start_date');
+            const endDate = document.getElementById('end_date');
+            const statusSelect = document.getElementById('status');
+            const nameSelect = document.getElementById('name');
+            const form = document.getElementById('leaveForm');
 
-            dropdownElements.forEach(function(dropdown) {
-                dropdown.addEventListener("click", function(event) {
-                    var dropdownMenu = this.nextElementSibling;
-                    var rect = dropdown.getBoundingClientRect();
-                    dropdownMenu.style.position = "fixed";
-                    dropdownMenu.style.top = rect.bottom - 30 + "px"; // Adjust the top position
-                    dropdownMenu.style.left = rect.left - 87 + "px"; // Adjust the left position
-                    dropdownMenu.style.width = "200px"; // Adjust as needed
-                });
+            form.addEventListener('submit', function(event) {
+                if (!startDate.value || !endDate.value || !statusSelect.value || !nameSelect.value) {
+                    event.preventDefault();
+                    alert('Please fill in all fields before submitting.');
+                }
             });
         });
-    </script> --}}
+    </script>
+
 @endsection

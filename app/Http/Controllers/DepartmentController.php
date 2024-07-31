@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Department;
+use App\Models\Employee;
+
 
 class DepartmentController extends Controller
 {
@@ -14,9 +16,7 @@ class DepartmentController extends Controller
     public function index()
     {
         $departments = Department::all();
-        return view('content-pages.department', compact('departments'))
-        // ->with('departments', $departments)
-        ;
+        return view('content-pages.department', compact('departments'));
     }
 
     /**
@@ -25,12 +25,9 @@ class DepartmentController extends Controller
     public function create()
     {
         $departments = Department::all();
-        // $departmentss = Department::find($id);
-        return view('content-pages.department-new', compact('departments'
-        // , 'departmentss'
-        ))
-        // ->with('departmentss', $departmentss)
-        ;
+        return view('content-pages.department-new', compact(
+            'departments'
+        ));
     }
 
     /**
@@ -48,20 +45,35 @@ class DepartmentController extends Controller
     /**
      * Display the specified resource.
      */
+    // public function show(string $id)
+    // {
+    //     $departments = Department::all();
+    //     $departmentss = Department::find($id);
+
+    //     if (!$departmentss) {
+    //         return redirect()->back()->with('error', 'Department not found.');
+    //     }
+
+    //     return view('content-pages.department', compact('departments', 'departmentss'))
+    //     ;
+    // }
+
+
     public function show(string $id)
     {
         $departments = Department::all();
         $departmentss = Department::find($id);
-        
+
         if (!$departmentss) {
             return redirect()->back()->with('error', 'Department not found.');
         }
 
-        // return view('content-pages.department', compact('departments'))
-        return view('content-pages.department', compact('departments', 'departmentss'))
-        // ->with('departmentss', $departmentss)
-        ;
+        // Fetch employees associated with the selected department
+        $employees = Employee::where('department', $departmentss->department_name)->get();
+
+        return view('content-pages.department', compact('departments', 'departmentss', 'employees'));
     }
+
 
     /**
      * Show the form for editing the specified resource.

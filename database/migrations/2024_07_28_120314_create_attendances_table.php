@@ -18,6 +18,9 @@ return new class extends Migration
             $table->time('arrival'); // Arrival time
             $table->time('departure')->nullable(); // Departure time
             $table->string('status');
+
+            $table->boolean('is_signed_out')->default(false); // Added through different migration, delete mo siguro?
+
             $table->timestamps();
 
         });
