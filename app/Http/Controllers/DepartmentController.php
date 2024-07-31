@@ -80,7 +80,14 @@ class DepartmentController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $departments = Department::all();
+        $departmentss = Department::find($id);
+
+        if (!$departmentss) {
+            return redirect('/manager/department')->with('error', 'Department not found.');
+        }
+        
+        return view('content-pages.department-edit', compact('departments', 'departmentss'));
     }
 
     /**
@@ -88,7 +95,17 @@ class DepartmentController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            // 'first_name' => 'required|string|max:255',
+            // 'photo' => 'nullable|file|image|max:10240', 
+        ]);
+
+        
+        $departments = Department::find($id);
+        $departments->department_name = $request->department_name;
+        $departments->history = $request->history;
+        $departments->save();
+        return redirect('/manager/department/' . $departments->id)->with("success", "Department updated successfully!");
     }
 
     /**

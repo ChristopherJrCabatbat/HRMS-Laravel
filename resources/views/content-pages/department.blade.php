@@ -66,11 +66,14 @@
         @else
             <div class="d-flex justify-content-between align-items-center mb-3">
                 <h3 class="mb-0">{{ $departmentss->department_name }}</h3>
-                <form action="employee-add.html">
+                {{-- <form action="/manager/department/{{ $departmentss->id }}/edit">
                     <button class="btn btn-primary rounded-pill px-4" type="submit">
                         <i class="fas fa-pen-to-square"></i> Edit Info
                     </button>
-                </form>
+                </form> --}}
+                <a href="/manager/department/{{ $departmentss->id }}/edit" class="btn btn-primary rounded-pill px-4">
+                    <i class="fas fa-pen-to-square"></i> Edit Info
+                </a>
             </div>
             <hr />
             <div class="d-flex justify-content-between">
@@ -87,15 +90,15 @@
                         <div class="row row-cols-2">
                             @forelse ($employees as $employee)
                                 <div class="col d-flex justify-content-center">
-                                    <div class="card border-0" style="width: 9rem">
+                                    <div class="card border-0">
                                         <div
-                                            class="card-body d-flex flex-column justify-content-center align-items-center text-center">
+                                            class="card-body d-flex flex-column justify-content-center align-items-center text-center" style="width: 11rem">
                                             <img src="{{ $employee->photo ? asset($employee->photo) : asset('images/employee.png') }}"
                                                 class="img-fluid rounded-circle text-center border-primary border border-primary" alt="Employee Image"
                                                 style="width: 70px; height: 70px; margin-right: 0; object-fit: cover" />
                                             <h5 class="card-title">{{ $employee->first_name }} {{ $employee->last_name }}
                                             </h5>
-                                            <p class="card-text">({{ $employee->id }})</p>
+                                            <p class="card-text">({{ $employee->mobile_number }})</p>
                                             <a href="/manager/employee/{{ $employee->id }}" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i> View
                                                 profile</a>
                                         </div>

@@ -67,7 +67,7 @@
                 {{-- Picture --}}
                 <div class="mb-3">
                     <label for="userImage" class="form-label">Upload Picture:</label>
-                    <input type="file" class="form-control" id="photo" name="photo" accept="image/*" />
+                    <input type="file" required class="form-control" id="photo" name="photo" accept="image/*" />
                 </div>
 
                 <div class="d-grid my-3">

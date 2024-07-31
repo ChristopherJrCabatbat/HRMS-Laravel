@@ -88,11 +88,11 @@
                         <td>{{ $employees->email }}</td>
                         <td class="position-relative">
                             <div class="dropdown">
-                                <button class="btn btn-primary btn-sm dropdown-toggle manageDropdown1" type="button"
+                                <button class="btn btn-primary btn-sm dropdown-toggle" type="button"
                                     id="manageDropdown1" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-gear"></i>
                                     Manage
                                 </button>
-                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="manageDropdown1">
+                                <ul class="dropdown-menu dropdown-menu-end manageDropdown1" aria-labelledby="manageDropdown1" style="max-height: 16vh">
                                     <li>
                                         <a class="dropdown-item" href="employee/{{ $employees->id }}"><i class="fas fa-eye" style="color: green"></i> View</a>
                                     </li>
@@ -147,7 +147,7 @@
                     var dropdownMenu = this.nextElementSibling;
                     var rect = dropdown.getBoundingClientRect();
                     dropdownMenu.style.position = "fixed";
-                    dropdownMenu.style.top = rect.bottom - 30 + "px"; // Adjust the top position
+                    dropdownMenu.style.top = rect.bottom - 80 + "px"; // Adjust the top position
                     dropdownMenu.style.left = rect.left - 87 + "px"; // Adjust the left position
                     dropdownMenu.style.width = "200px"; // Adjust as needed
                 });
