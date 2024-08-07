@@ -28,13 +28,7 @@
         <div class="container d-flex flex-column align-items-center justify-content-center my-5 px-5">
             <h3 class="mb-5">HRMS SOFTWARE</h3>
             <p class="p-padding">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel sit,
-                unde exercitationem cumque eveniet est minima, eum laborum eaque
-                perferendis sint dignissimos repellendus quae consequatur repudiandae,
-                illo quo iste dolorem eius quos impedit vero rem. Animi voluptatem
-                porro aspernatur reiciendis? Iste, quidem ipsum magnam cupiditate rem
-                nostrum sequi quisquam doloribus explicabo in repellat corporis atque
-                sint omnis nemo veritatis eum.
+                HRMS software, or human resources management system, is a suite of software applications used to manage human resources and related processes throughout the employee lifecycle. It enables a company to fully understand its workforce while staying compliant with changing tax laws and labor regulations. HRMS software helps HR professionals manage the modern workforce by providing features such as recruitment and onboarding, secure data management, training, compliant payroll, attendance, leaves, performance, rewards, offboarding, help desk, analytics and reporting, etc.
             </p>
         </div>
     </main>

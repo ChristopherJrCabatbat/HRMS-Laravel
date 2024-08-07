@@ -61,9 +61,9 @@
                 <div class="d-grid my-3">
                     <button class="btn btn-primary" type="submit">Log in</button>
                 </div>
-                <div class="container d-flex justify-content-center align-items-center mb-0">
+                {{-- <div class="container d-flex justify-content-center align-items-center mb-0">
                     <p class="mb-0">Don't have an account yet? <a href="/register">Sign up</a></p>
-                </div>
+                </div> --}}
             </form>
         </div>
     </main>
